@@ -9,7 +9,7 @@ const Audio = sequelize.define('audio', {
         autoIncrement: true,
     },
     nombre_audio: {
-        type: Sequelize.STRING(25),
+        type: Sequelize.STRING(50),
         allowNull: false,
         validate:{
             isAlpha: true
@@ -29,6 +29,10 @@ const Audio = sequelize.define('audio', {
             isInt: true,
         }
     },
+    url_audio: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    }
 }, {
   timestamps: false
 })

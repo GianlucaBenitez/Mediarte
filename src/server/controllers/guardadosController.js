@@ -2,7 +2,8 @@
 const Guardado = require('../models/Guardados.js');
 
 // Controlador de guardados
-const obtener = async (req, res) => {
+const guardadosController = {
+  obtener: async (req, res) => {
     try {
       const id = req.params.id ;
       const guardados = await Guardado.findByPk(id)
@@ -15,8 +16,7 @@ const obtener = async (req, res) => {
     } catch (error) {
       return res.status(500).json({error: "Internal Server Error"})
     }
+  }
 }
 
-module.exports = {
-    obtener
-}
+module.exports = guardadosController;

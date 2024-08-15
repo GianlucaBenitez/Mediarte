@@ -5,13 +5,10 @@ const router = express.Router()
 const usuariosController = require('../controllers/usuariosController')
 
 // rutas
-router.get("/", usuariosController.menu);
-router.get("/config",usuariosController.configuracion);
-router.get("/ayuda",usuariosController.ayuda);
-router.get("/admin", usuariosController.obtenerTodos);
-router.post("/admin", usuariosController.crear);
-router.put("/admin/:id", usuariosController.actualizar);
-router.delete("/admin/:id", usuariosController.borrar);
+router.get("/", usuariosController.obtenerTodos);
+router.post("/", usuariosController.crear);
+router.put("/:id", usuariosController.actualizar);
+router.delete("/:id", usuariosController.borrar);
 router.get("/:id", usuariosController.obtener);
 
 module.exports = router

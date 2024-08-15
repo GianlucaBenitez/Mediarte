@@ -21,23 +21,13 @@ const Usuario = sequelize.define('usuario', {
         }
     },
     contrasena: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
-  /* Suponiendo que queramos una FK
-  vendedor: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: 'Vendedores',
-      key: 'id'
-    }
-  }
-  */
 }, {
   timestamps: false
 })
 
 Usuario.sync();
-// Usuario.sync({alter: true}) | Usuario.sync({force: true})
 
 module.exports = Usuario;
