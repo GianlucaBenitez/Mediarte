@@ -3,7 +3,8 @@ const Usuario = require('../models/Usuario.js');
 
 // Creamos los Regex para las validaciones
 const emailregex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
-const contrasenaregex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+const contrasenaregex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"'])[A-Za-z\d!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"']{8,}$/;
+const usuarioregex = /^[A-Za-z\d]{5,}$/;
 
 // Controlador de usuarios
 const usuariosController = {
@@ -36,7 +37,7 @@ const usuariosController = {
       const { nombre, email, contrasena } = req.body
   
       // Validaciones
-      if (!nombre || nombre.length < 5) {
+      if (!nombre || !usuarioregex.test(nombre)) {
         return res.status(401).json({error: "Nombre inválido"})
       }
       if (!email || !emailregex.test(email)) {
@@ -72,7 +73,7 @@ const usuariosController = {
       const id = req.params.id;
   
       // Validaciones
-      if (!nombre || nombre.length < 5) {
+      if (!nombre || !usuarioregex.test(nombre)) {
         return res.status(401).json({ error: "Nombre inválido" });
       }
       if (!email || !emailregex.test(email)) {
