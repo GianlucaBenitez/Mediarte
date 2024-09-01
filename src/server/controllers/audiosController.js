@@ -1,5 +1,5 @@
 // Importamos modelo de Audio
-const Audio = require('../models/Audio.js');
+import Audio from '../models/Audio.js';
 
 // Controlador de audios
 const audiosController = {
@@ -52,4 +52,4 @@ const audiosController = {
   }
 }
 
-module.exports = audiosController;
+export default audiosController;

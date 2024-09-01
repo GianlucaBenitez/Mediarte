@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,13 +22,13 @@ app.listen(3000, () => {
 
 // Referencia a las rutas
 
-const usuarios = require('./routes/usuarios.js')
+import usuarios from "./routes/usuarios.js";
 app.use("/usuarios", usuarios)
 
-const meditaciones = require('./routes/meditaciones.js')
+import meditaciones from "./routes/meditaciones.js";
 app.use("/meditaciones", meditaciones)
 
-const guardados = require('./routes/guardados.js')
+import guardados from "./routes/guardados.js";
 app.use("/guardados", guardados)
 
 // Menu de inicio

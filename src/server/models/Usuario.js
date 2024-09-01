@@ -1,5 +1,5 @@
-const { Sequelize } = require('sequelize');
-const sequelize = require('../config/db_sequelize');
+import {Sequelize} from "sequelize";
+import sequelize from '../config/db_sequelize.js';
 
 // Definir la estructura del Usuario
 const Usuario = sequelize.define('usuario', {
@@ -30,4 +30,4 @@ const Usuario = sequelize.define('usuario', {
 
 Usuario.sync();
 
-module.exports = Usuario;
+export default Usuario;

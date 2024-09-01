@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router()
 
 // Importamos controlador
-const audiosController = require('../controllers/audiosController');
+import audiosController from '../controllers/audiosController.js';
 
 // rutas
 router.get("/", audiosController.obtenerTodos);
 router.get("/:tipo", audiosController.obtenerPorTipo);
   
-module.exports = router
+export default router

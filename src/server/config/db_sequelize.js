@@ -1,6 +1,6 @@
-const { Sequelize } = require('sequelize');
-const {pg} = require("pg");
-const {config} = require("dotenv");
+import {Sequelize} from "sequelize";
+import pg from "pg";
+import {config} from "dotenv";
 config();
 
 // Connectar a DB
@@ -28,4 +28,4 @@ const database = new Sequelize({
   }
 })();
 
-module.exports = database
+export default database

@@ -1,7 +1,7 @@
-const { Sequelize } = require('sequelize');
-const sequelize = require('../config/db_sequelize');
-const Usuario = require('../models/Usuario.js');
-const Audio = require('../models/Audio.js')
+import {Sequelize} from "sequelize";
+import sequelize from '../config/db_sequelize.js';
+import Usuario from '../models/Usuario.js';
+import Audio from '../models/Audio.js';
 
 // Definir la estructura del Guardado
 const Guardado = sequelize.define('guardado', {
@@ -37,4 +37,4 @@ Guardado.belongsTo(Audio, {
 
 Guardado.sync();
 
-module.exports = Guardado;
+export default Guardado;

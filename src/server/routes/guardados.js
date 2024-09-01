@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router()
 
 // Importamos controlador
-const guardadosController = require('../controllers/guardadosController');
+import guardadosController from '../controllers/guardadosController.js';
 
 // rutas
 router.get("/:id", guardadosController.obtener);
 
   
-module.exports = router
+export default router

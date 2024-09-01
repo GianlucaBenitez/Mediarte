@@ -1,5 +1,5 @@
 // Importamos modelo de Usuario
-const Usuario = require('../models/Usuario.js');
+import Usuario from "../models/Usuario.js";
 
 // Creamos los Regex para las validaciones
 const emailregex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
@@ -123,4 +123,4 @@ const usuariosController = {
   }
 }
 
-module.exports = usuariosController;
+export default usuariosController;

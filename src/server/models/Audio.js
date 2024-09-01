@@ -1,5 +1,5 @@
-const { Sequelize } = require('sequelize');
-const sequelize = require('../config/db_sequelize');
+import {Sequelize} from "sequelize";
+import sequelize from '../config/db_sequelize.js';
 
 // Definir la estructura del Audio
 const Audio = sequelize.define('audio', {
@@ -39,4 +39,4 @@ const Audio = sequelize.define('audio', {
 
 Audio.sync();
 
-module.exports = Audio;
+export default Audio;

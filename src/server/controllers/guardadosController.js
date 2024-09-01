@@ -1,5 +1,5 @@
 // Importamos modelo de Guardado
-const Guardado = require('../models/Guardados.js');
+import Guardado from '../models/Guardados.js';
 
 // Controlador de guardados
 const guardadosController = {
@@ -19,4 +19,4 @@ const guardadosController = {
   }
 }
 
-module.exports = guardadosController;
+export default guardadosController;
