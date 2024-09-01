@@ -1,16 +1,23 @@
 const { Sequelize } = require('sequelize');
+const {pg} = require("pg");
+const {config} = require("dotenv");
+config();
 
 // Connectar a DB
-const database = new Sequelize(
-  'mediarte', 
-  'root', 
-  '', 
-  {
-    host: '127.0.0.1',
-    dialect: 'mysql'
-  }
-);
-
+const database = new Sequelize({
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DATABASE,
+  host: process.env.POSTGRES_HOST,
+  dialectModule: pg,
+  dialect: "postgres",
+   dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  }, 
+});
 // Testeamos conexión
 (async () => {
   try {
