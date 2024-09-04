@@ -7,50 +7,47 @@
     <link rel="stylesheet" href="styles/styles.css">
     <title>Mediarte</title>
 </head>
-<body class="vh-100 overflow-hidden">
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg bd-body-tertiary bg-transprent">
-        <div class="container">
-           <!--Logo--> 
-          <a class="navbar-brand">Mediarte</a><bold>
-          <!--Toggle Button-->
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!--SideBar-->
-          <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-           <!--Sidebar Header-->
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mediarte</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <!--Sidebar Body-->
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item mx-2">
-                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                </li>
-                <!--Menu Meditaciones-->
-                <li class="nav-item dropdown mx-2">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Meditaciones
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Dormir</a></li>
-                    <li><a class="dropdown-item" href="#">Ansiedad</a></li>
-                    <li><a class="dropdown-item" href="#">Estres</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <!--Iniciar Sesion/ Registrarse-->
-              <div class="d-flex justify-content-center align-items-center gap-3">
-                <a href="login.html" class="text-dark">Iniciar Sesion</a>
-                <a href="registrarse.html" class="text-white text-decoration-none px-3 py-1 rounded-4" style="background-color:rgb(165, 182, 192)">Registrarse</a>
+<!----------------------- Main Container -------------------------->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <!----------------------- Login Container -------------------------->
+     <div class="row border rounded-5 p-3 bg-white shadow box-area">
+  <!--------------------------- Left Box ----------------------------->
+     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: rgb(200, 215, 228);">
+         <div class="featured-image mb-3">
+          <img src="styles/fondoo.png" class="img-fluid" style="width: 250px;">
+         </div>
+     </div> 
+  <!-------------------- ------ Right Box ---------------------------->
+      
+     <div class="col-md-6 right-box">
+        <div class="row align-items-center">
+              <div class="header-text mb-4">
+                   <h2>Bienvenido a Mediarte</h2>
+                   <p>Estamos felices de volverte a ver</p>
               </div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nombre Usuario">
             </div>
-          </div>
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email">
+              </div>
+              <div class="input-group mb-3">
+                  <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Contraseña">
+              </div>
+              <div class="input-group mb-3">
+                <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Confirmar Contraseña">
+            </div>
+              </div>
+              <div class="input-group mb-3">
+                  <button class="btn btn-lg w-100 fs-6">Enviar</button>
+              </div>
+              <div class="row">
+                  <small>No tienes una cuenta? <a href="registrarse.html">Registrate</a></small>
+              </div>
         </div>
-      </nav>
+     </div> 
+    </div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
