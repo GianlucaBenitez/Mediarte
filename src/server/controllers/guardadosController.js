@@ -1,5 +1,4 @@
-ñ// Importamos modelo de Guardado
-import Audio from '../models/Audio.js';
+// Importamos modelo de Guardado
 import Audio from '../models/Audio.js';
 import Guardado from '../models/Guardados.js';
 
@@ -7,7 +6,7 @@ import Guardado from '../models/Guardados.js';
 const guardadosController = {
   obtener: async (req, res) => {
     try {
-      const id = req.params.id ;
+      const {id} = req.params;
       const guardados = await Guardado.findByPk(id)
 
       if (!guardados) {
@@ -19,9 +18,10 @@ const guardadosController = {
       return res.status(500).json({error: "Internal Server Error"})
     }
   },    
+
   crear: async (req, res) => {
     try {
-      const {  guardados } = req.body
+      const { id_audio } = req.body;
   
       // Validaciones
       if (!guardados || !Audioregex.test(guardados)) {
@@ -30,7 +30,8 @@ const guardadosController = {
     const AudioNuevo = await Audio.create({ 
         nombre: guardados, 
       });
-      AudioNuevo.save();
+
+    AudioNuevo.save();
   
       return res.status(200).json({
         message: "Audio creado!",
