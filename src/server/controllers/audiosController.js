@@ -27,6 +27,38 @@ const audiosController = {
     }
   },
 
+  crear: async (req, res) => {
+    try {
+      const { nombre_audio, tipo_meditacion, url_audio } = req.body;
+  
+      if(!nombre_audio || nombre_audio.length > 50){
+        return res.status(401).json({ error: "Nombre del audio inválido" });
+      }
+      if(!tipo_meditacion || nombre_audio.length > 50){
+        return res.status(401).json({ error: "Tipo del audio inválido" });
+      }
+      if(!url_audio){
+        return res.status(401).json({ error: "url del audio inválido" });
+      }
+  
+      const audioNuevo = await Usuario.create({ 
+        nombre_audio, 
+        tipo_meditacion, 
+        url_audio
+      });
+
+      audioNuevo.save();
+  
+      return res.status(200).json({
+        message: "Audio creado!",
+        data: audioNuevo
+      })
+  
+    } catch (error) {
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
+
   actualizar: async (req, res) => {
     try {
       const { nombre_audio, tipo_meditacion, url_audio } = req.body;
@@ -36,6 +68,16 @@ const audiosController = {
 
       if (!audio) {
         return res.status(404).json({ error: "Audio no encontrado" });
+      }
+
+      if(!nombre_audio || nombre_audio.length > 50){
+        return res.status(401).json({ error: "Nombre del audio inválido" });
+      }
+      if(!tipo_meditacion || nombre_audio.length > 50){
+        return res.status(401).json({ error: "Tipo del audio inválido" });
+      }
+      if(!url_audio){
+        return res.status(401).json({ error: "url del audio inválido" });
       }
 
       audio.nombre_audio = nombre_audio;

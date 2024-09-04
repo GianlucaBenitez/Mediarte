@@ -9,6 +9,6 @@ router.get("/", audiosController.obtenerTodos);
 router.get("/:tipo", audiosController.obtenerPorTipo);
 router.put("/",audiosController.actualizar);
 router.delete("/",audiosController.borrar);
-// router.post("/",audiosController.crear);
+router.post("/",audiosController.crear);
   
 export default router
