@@ -1,7 +1,9 @@
 // Importamos modelo de Usuario
 import Usuario from "../models/Usuario.js";
-
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import {config} from "dotenv";
+config();
 const salt = Number(process.env.SALT)
 
 // Creamos los Regex para las validaciones
@@ -35,9 +37,9 @@ const usuariosController = {
       }
   },
   
-  crear: async (req, res) => {
+  registro: async (req, res) => {
     try {
-      const { nombre, email, contrasena } = req.body
+      const { nombre, email, contrasena, confirmarContrasena } = req.body
   
       // Validaciones
       if (!nombre || !usuarioregex.test(nombre)) {
@@ -48,6 +50,12 @@ const usuariosController = {
       }
       if (!contrasena || !contrasenaregex.test(contrasena)) {
         return res.status(401).json({error: "Contrasena inválido"})
+      }
+      if (!confirmarContrasena){
+        return res.status(401).json({error: "El campo confirmar contrasena no puede estar vacio"})
+      }
+      if (contrasena !== confirmarContrasena) {
+        return res.status(400).json(["Las contraseñas no coinciden"]);
       }
   
       const emailEnUso = await Usuario.findOne({ where: { email: email } });
@@ -68,6 +76,39 @@ const usuariosController = {
       })
   
     } catch (error) {
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
+
+  login: async (req, res) => {
+    try {
+      const { email, contrasena } = req.body;
+
+      const usuario = await Usuario.findOne({where: {email}});
+      if (!usuario) {
+        return res.status(401).json({error:"El usuario no existe"});
+      }
+
+      const contrasenaCorrecta = bcrypt.compareSync(contrasena, usuario.contrasena);
+      if (!contrasenaCorrecta) {
+        return res.status(404).json({error:"Contraseña incorrecta"});
+      }
+
+      const usuarioToken = usuario.toJSON();
+      delete usuarioToken.contrasena;
+
+      const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "1h"});
+
+      res.cookie("token",token,{
+        httpOnly: true,
+        // secure: true,
+        sameSite: "none",
+      })
+
+      return res.status(200).json({usuarioToken, token})
+  
+    } catch (error) {
+      console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
@@ -106,6 +147,7 @@ const usuariosController = {
   
       return res.status(200).json({ message: "Usuario actualizado exitosamente", data: usuario});
     } catch (error) {
+      console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
