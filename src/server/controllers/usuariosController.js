@@ -84,6 +84,13 @@ const usuariosController = {
     try {
       const { email, contrasena } = req.body;
 
+      if (!email || !emailregex.test(email)) {
+        return res.status(401).json({error: "Email inválido"})
+      }
+      if (!contrasena || !contrasenaregex.test(contrasena)) {
+        return res.status(401).json({error: "Contrasena inválido"})
+      }
+
       const usuario = await Usuario.findOne({where: {email}});
       if (!usuario) {
         return res.status(401).json({error:"El usuario no existe"});
@@ -138,10 +145,12 @@ const usuariosController = {
       if (emailEnUso && emailEnUso.id_usuario != id) {
         return res.status(409).json({ error: "Email ya está en uso" });
       }
+
+      const contrasenaHasheada = await bcrypt.hash(contrasena, salt)
   
       usuario.nombre = nombre;
       usuario.email = email;
-      usuario.contrasena = contrasena;
+      usuario.contrasena = contrasenaHasheada;
       
       await usuario.save();
   
