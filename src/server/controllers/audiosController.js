@@ -13,12 +13,8 @@ const cloudinaryUploader = async (req, res) => {
 
   try {
     const uploadAudio = await cloudinary.uploader.upload(file.path, {
-      resource_type: "video", 
-      public_id: `audios/${fName}`, 
-      format: 'mp3', 
-      transformation: [
-        { quality: 'auto:low', audio_codec: 'mp3', audio_bitrate: '96k' }
-      ]
+      resource_type: "raw",
+      public_id: `audios/${fName}`,
     });
 
     return uploadAudio;

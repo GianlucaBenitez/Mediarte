@@ -1,6 +1,9 @@
 // Importamos modelo de Usuario
 import Usuario from "../models/Usuario.js";
 
+import bcrypt from "bcrypt";
+const salt = Number(process.env.SALT)
+
 // Creamos los Regex para las validaciones
 const emailregex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 const contrasenaregex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"'])[A-Za-z\d!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"']{8,}$/;
@@ -51,9 +54,11 @@ const usuariosController = {
       if (emailEnUso) {
         return res.status(409).json({ error: "Email ya está en uso" });
       }
+
+      const contrasenaHasheada = await bcrypt.hash(contrasena, salt)
   
       const usuarioNuevo = await Usuario.create({ 
-        nombre: nombre, email: email, contrasena: contrasena 
+        nombre: nombre, email: email, contrasena: contrasenaHasheada 
       });
       usuarioNuevo.save();
   
