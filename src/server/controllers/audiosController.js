@@ -121,6 +121,27 @@ const audiosController = {
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
+
+  cantidadReproducciones : async (req, res) => {
+    try {
+      const {id_audio} = req.params;
+
+      const audio = await Audio.findByPk(id_audio)
+
+      if (!audio) {
+        return res.status(404).json({ error: "Audio no encontrado" });
+      }
+
+      audio.cant_reprod += 1; 
+      
+
+      await audio.save();
+      return res.status(200).json({ message: "Audio actualizado exitosamente", data: audio});
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
   
   borrar: async (req, res) => {
     try {
@@ -142,5 +163,6 @@ const audiosController = {
     }
   }
 }
+
 
 export default audiosController;

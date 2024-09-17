@@ -13,5 +13,6 @@ router.get("/:tipo", audiosController.obtenerPorTipo);
 router.put("/:id_audio",audiosController.actualizar);
 router.delete("/:id_audio",audiosController.borrar);
 router.post("/",upload,audiosController.crear);
+router.put("/reproducciones/:id_audio",audiosController.cantidadReproducciones)
   
 export default router
