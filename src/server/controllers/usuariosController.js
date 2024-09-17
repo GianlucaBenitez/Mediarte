@@ -16,7 +16,7 @@ const usuariosController = {
   obtenerTodos: async (req, res) => {
     try {
       const usuarios = await Usuario.findAll()
-      return res.status(200).json({message: usuarios}) 
+      return res.status(200).json({message: "Usuarios obtenidos", data: usuarios}) 
     } catch (error) {
       return res.status(500).json({error: "Internal Server Error"})
     }
@@ -24,14 +24,14 @@ const usuariosController = {
   
   obtener: async (req, res) => {
       try {
-        const id = req.params.id;
+        const {id} = req.params;
         const usuario = await Usuario.findByPk(id)
         
         if(!usuario){
           return res.status(404).json({error: "Usuario no existe"})
         }
   
-        return res.status(200).json({message: usuario}) 
+        return res.status(200).json({message: "Usuario obtenido", data: usuario}) 
       } catch (error) {
         return res.status(500).json({error: "Internal Server Error"})
       }
@@ -112,7 +112,7 @@ const usuariosController = {
         sameSite: "none",
       })
 
-      return res.status(200).json({usuarioToken, token})
+      return res.status(200).json({message: "Login exitoso", data: {usuarioToken, token}})
   
     } catch (error) {
       console.log(error);
@@ -123,7 +123,7 @@ const usuariosController = {
   actualizar: async (req, res) => {
     try {
       const { nombre, email, contrasena } = req.body;
-      const id = req.params.id;
+      const {id} = req.params;
   
       // Validaciones
       if (!nombre || !usuarioregex.test(nombre)) {

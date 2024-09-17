@@ -27,8 +27,8 @@ app.listen(3000, () => {
 import usuarios from "./routes/usuarios.js";
 app.use("/usuarios", usuarios)
 
-import meditaciones from "./routes/meditaciones.js";
-app.use("/meditaciones", meditaciones)
+import audios from "./routes/audios.js";
+app.use("/audios", audios)
 
 import guardados from "./routes/guardados.js";
 app.use("/guardados", guardados)

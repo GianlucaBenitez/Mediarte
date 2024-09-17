@@ -2,7 +2,7 @@
 import Audio from '../models/Audio.js';
 import cloudinary from "../config/cloudinary.js";
 
-const cloudinaryUploader = async (req, res) => {
+const subirACloudinary = async (req, res) => {
   const file = req.file;
 
   if (!file) {
@@ -12,7 +12,7 @@ const cloudinaryUploader = async (req, res) => {
   const fName = file.originalname.split(".")[0];
 
   try {
-    const uploadAudio = await cloudinary.uploader.upload(file.path, {
+    const audio = await cloudinary.uploader.upload(file.path, {
       resource_type: "video",
       public_id: `audios/${fName}`,
       format: 'mp3', 
@@ -21,7 +21,7 @@ const cloudinaryUploader = async (req, res) => {
       ]
     });
 
-    return uploadAudio;
+    return audio;
   } catch (error) {
     console.log(error);
     return res.status(400).json({error: "Internal Server Error"});
@@ -59,10 +59,10 @@ const audiosController = {
       if (req.fileValidationError) {
         return res
           .status(400)
-          .json({ error: `File validation error: ${req.fileValidationError}` });
+          .json({ error: req.fileValidationError });
       }
 
-      const audio = await cloudinaryUploader(req, res);
+      const audio = await subirACloudinary(req, res);
 
       const { nombre_audio, tipo_meditacion } = req.body;
   
@@ -87,16 +87,17 @@ const audiosController = {
       })
   
     } catch (error) {
-      return res.status(500).json({error: error.message})
+      console.log(error)
+      return res.status(500).json({error: "Internal Server Error"})
     }
   },
 
   actualizar: async (req, res) => {
     try {
-      const { nombre_audio, tipo_meditacion, url_audio } = req.body;
-      const {id} = req.params;
+      const { nombre_audio, tipo_meditacion } = req.body;
+      const {id_audio} = req.params;
 
-      const audio = Audio.findByPk(id)
+      const audio = await Audio.findByPk(id_audio)
 
       if (!audio) {
         return res.status(404).json({ error: "Audio no encontrado" });
@@ -108,27 +109,24 @@ const audiosController = {
       if(!tipo_meditacion || nombre_audio.length > 50){
         return res.status(401).json({ error: "Tipo del audio inválido" });
       }
-      if(!url_audio){
-        return res.status(401).json({ error: "url del audio inválido" });
-      }
 
       audio.nombre_audio = nombre_audio;
       audio.tipo_meditacion = tipo_meditacion;
-      audio.url_audio = url_audio;
   
       await audio.save();
   
-      return res.status(200).json({ message: "Audio  actualizado exitosamente", data: audio});
+      return res.status(200).json({ message: "Audio actualizado exitosamente", data: audio});
     } catch (error) {
+      console.log(error)
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
   
   borrar: async (req, res) => {
     try {
-      const {id} = req.params;
+      const {id_audio} = req.params;
   
-      const audio = await Audio.findByPk(id);
+      const audio = await Audio.findByPk(id_audio);
 
       if (!audio) {
         return res.status(404).json({ error: "audio no encontrado" });
@@ -136,7 +134,7 @@ const audiosController = {
 
       const audioBorrado = audio;
   
-      await Audio.destroy({ where: { id_audio: id } });
+      await Audio.destroy({ where: { id_audio } });
   
       return res.status(200).json({ message: "Audio borrado", data: audioBorrado});
     } catch (error) {

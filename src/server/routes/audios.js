@@ -10,8 +10,8 @@ import upload from '../middleware/multer.js'
 // rutas
 router.get("/", audiosController.obtenerTodos);
 router.get("/:tipo", audiosController.obtenerPorTipo);
-router.put("/",audiosController.actualizar);
-router.delete("/",audiosController.borrar);
+router.put("/:id_audio",audiosController.actualizar);
+router.delete("/:id_audio",audiosController.borrar);
 router.post("/",upload,audiosController.crear);
   
 export default router
