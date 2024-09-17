@@ -5,14 +5,16 @@ const router = express.Router()
 import audiosController from '../controllers/audiosController.js';
 
 // Importamos el middleware
-import upload from '../middleware/multer.js'
+import upload from '../middleware/multer.js';
+import verificarToken from '../middleware/verificarToken.js'
 
 // rutas
 router.get("/", audiosController.obtenerTodos);
 router.get("/:tipo", audiosController.obtenerPorTipo);
-router.put("/:id_audio",audiosController.actualizar);
-router.delete("/:id_audio",audiosController.borrar);
-router.post("/",upload,audiosController.crear);
-router.put("/reproducciones/:id_audio",audiosController.cantidadReproducciones)
+router.get("/obtenerId/:id_audio", audiosController.obtenerPorId);
+router.put("/:id_audio", verificarToken, upload, audiosController.actualizar);
+router.delete("/:id_audio", verificarToken, audiosController.borrar);
+router.post("/", verificarToken, upload, audiosController.crear);
+router.put("/reproducciones/:id_audio",audiosController.actualizarReproducciones)
   
 export default router

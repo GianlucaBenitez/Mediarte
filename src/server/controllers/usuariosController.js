@@ -15,6 +15,10 @@ const usuarioregex = /^[A-Za-z\d]{5,}$/;
 const usuariosController = {
   obtenerTodos: async (req, res) => {
     try {
+      if(req.usuario.rol !== "admin"){
+        return res.status(401).json({error: "Debes de ser un admin"}) 
+      }
+
       const usuarios = await Usuario.findAll()
       return res.status(200).json({message: "Usuarios obtenidos", data: usuarios}) 
     } catch (error) {
@@ -33,6 +37,7 @@ const usuariosController = {
   
         return res.status(200).json({message: "Usuario obtenido", data: usuario}) 
       } catch (error) {
+        console.log(error)
         return res.status(500).json({error: "Internal Server Error"})
       }
   },
@@ -119,6 +124,17 @@ const usuariosController = {
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
+
+  logout: async (req, res) => {
+    try {
+      res.clearCookie("token");
+
+      return res.status(200).json({ message: "Usuario deslogueado exitosamente"});
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
   
   actualizar: async (req, res) => {
     try {
@@ -171,6 +187,7 @@ const usuariosController = {
       }
   
       await Usuario.destroy({ where: { id_usuario: id } });
+      res.clearCookie("token");
   
       return res.status(200).json({ message: "Usuario borrado", data: usuario});
     } catch (error) {
