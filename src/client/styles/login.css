@@ -1,51 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
-body{
+body {
     font-family: 'Poppins', sans-serif;
     background: url(fondoOficial.png) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100vh;
 }
+
 /*------------ Login container ------------*/
-.box-area{
+.box-area {
     width: 930px;
 }
+
 /*------------ Right box ------------*/
-.right-box{
+.right-box {
     padding: 40px 30px 40px 40px;
 }
+
 /*------------ Custom Placeholder ------------*/
-::placeholder{
+::placeholder {
     font-size: 16px;
 }
-.rounded-4{
+
+.rounded-4 {
     border-radius: 20px;
 }
-.rounded-5{
+
+.rounded-5 {
     border-radius: 30px;
 }
 
 /*-----------Login Button------------*/
-.btn{
+.btn {
     background-color: rgb(200, 215, 228);
     color: black;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: rgb(37, 56, 72);
     color: white;
 }
 
 /*------------ For small screens------------*/
-@media only screen and (max-width: 768px){
-     .box-area{
+@media only screen and (max-width: 768px) {
+    .box-area {
         margin: 0 10px;
-     }
-     .left-box{
-        height: 100px;
+    }
+    .left-box {
+        height: 330px;
         overflow: hidden;
-     }
-     .right-box{
+    }
+    .right-box {
         padding: 20px;
-     }
+    }
+}
+
+/*------------ Responsive-Image ------------*/
+.responsive-image {
+    max-width: 100%;   
+    height: auto;    
+    display: block;    
+}
+
+/*---- Containerr ----*/
+.featured-image {
+    width: 100%;       
+    max-width: 500px; 
+    text-align: center; 
+    margin: 0 auto;    
 }
