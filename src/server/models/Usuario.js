@@ -24,6 +24,11 @@ const Usuario = sequelize.define('usuario', {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    rol: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "usuario",
+    },
 }, {
   timestamps: false
 })
