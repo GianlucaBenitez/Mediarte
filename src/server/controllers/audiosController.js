@@ -32,7 +32,7 @@ const cloudinaryUploader = async (req, res) => {
 const audiosController = {
   obtenerTodos: async (req, res) => {
     try {
-      const audios = await Audio.findAll()
+      const audios = await Aio.findAll()
       return res.status(200).json({message: audios}) 
     } catch (error) {
       return res.status(500).json({error: "Internal Server Error"})
