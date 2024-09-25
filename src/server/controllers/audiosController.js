@@ -1,46 +1,7 @@
 // Importamos modelo de Audio
 import Audio from '../models/Audio.js';
-import cloudinary from "../config/cloudinary.js";
-
-const subirACloudinary = async (req, res) => {
-  const file = req.file;
-
-  if (!file) {
-    return res.status(400).json({ error: "File not found" });
-  }
-
-  const fName = file.originalname.split(".")[0];
-
-  try {
-    const audio = await cloudinary.uploader.upload(file.path, {
-      resource_type: "video",
-      public_id: `audios/${fName}`,
-      format: 'mp3', 
-      transformation: [
-        { quality: 'auto:low', audio_codec: 'mp3', audio_bitrate: '96k' }
-      ]
-    });
-
-    return audio;
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({error: "Internal Server Error"});
-  }
-};
-
-const borrarDeCloudinary = async (url_audio) => {
-  try {
-    const urlArray = url_audio.split('/');
-    const nombreArchivo = urlArray[urlArray.length - 1].split('.')[0];
-    const publicId = `audios/${nombreArchivo}`;
-
-    await cloudinary.uploader.destroy(publicId, { resource_type: 'video' });
-
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({error: "Internal Server Error"})
-  }
-};
+import subirACloudinary from '../utils/subirACloudinary.js';
+import borrarDeCloudinary from '../utils/borrarDeCloudinary.js';
 
 // Controlador de audios
 const audiosController = {
@@ -49,6 +10,7 @@ const audiosController = {
       const audios = await Aio.findAll()
       return res.status(200).json({message: audios}) 
     } catch (error) {
+      console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
