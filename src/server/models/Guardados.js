@@ -5,11 +5,6 @@ import Audio from '../models/Audio.js';
 
 // Definir la estructura del Guardado
 const Guardado = sequelize.define('guardado', {
-    id_guardado:{
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
     id_usuario: {
         type: Sequelize.INTEGER,
     },

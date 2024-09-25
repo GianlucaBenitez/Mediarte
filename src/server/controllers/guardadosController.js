@@ -72,18 +72,20 @@ const guardadosController = {
   
   borrar: async (req, res) => {
     try {
-      const {id_guardado} = req.params;
+      const { id_usuario } = req.params
+      const { id_audio } = req.body;
   
-      const guardado = await Guardado.findByPk(id_guardado);
+      const guardado = await Guardado.findOne({ where: { id_usuario, id_audio } })
       if (!guardado) {
         return res.status(404).json({ error: "Guardado no encontrado" });
       }
 
       const guardadoBorrado = guardado;
-      await Guardado.destroy({ where: { id_guardado } });
+      await Guardado.destroy({ where: { id_usuario, id_audio }  });
   
-      return res.status(200).json({ message: "Audio borrado", data: guardadoBorrado});
+      return res.status(200).json({ message: "Guardado borrado", data: guardadoBorrado});
     } catch (error) {
+      console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
     }
   }
