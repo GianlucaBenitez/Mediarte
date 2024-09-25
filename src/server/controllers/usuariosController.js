@@ -60,7 +60,7 @@ const usuariosController = {
         return res.status(401).json({error: "El campo confirmar contrasena no puede estar vacio"})
       }
       if (contrasena !== confirmarContrasena) {
-        return res.status(400).json(["Las contraseñas no coinciden"]);
+        return res.status(400).json({error: "Las contraseñas no coinciden"});
       }
   
       const emailEnUso = await Usuario.findOne({ where: { email: email } });
@@ -74,13 +74,17 @@ const usuariosController = {
         nombre: nombre, email: email, contrasena: contrasenaHasheada 
       });
       usuarioNuevo.save();
+
+      const usuarioData = usuarioNuevo.toJSON();
+      delete usuarioData.contrasena;
   
       return res.status(200).json({
         message: "Usuario creado!",
-        data: usuarioNuevo
+        data: usuarioData
       })
   
     } catch (error) {
+      console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
     }
   },
@@ -89,21 +93,21 @@ const usuariosController = {
     try {
       const { email, contrasena } = req.body;
 
-      if (!email || !emailregex.test(email)) {
-        return res.status(401).json({error: "Email inválido"})
+      if (!email) {
+        return res.status(401).json({error: "Campo Email no puede estar vacio"})
       }
-      if (!contrasena || !contrasenaregex.test(contrasena)) {
-        return res.status(401).json({error: "Contrasena inválido"})
+      if (!contrasena) {
+        return res.status(401).json({error: "Campo Contrasena no puede estar vacio"})
       }
 
-      const usuario = await Usuario.findOne({where: {email}});
+      let usuario = await Usuario.findOne({where: {email}});
       if (!usuario) {
-        return res.status(401).json({error:"El usuario no existe"});
+        usuario = {contrasena: "123ñ"} // No pasa el regex, por lo cual nadie puede tener estar contraseña
       }
 
       const contrasenaCorrecta = bcrypt.compareSync(contrasena, usuario.contrasena);
       if (!contrasenaCorrecta) {
-        return res.status(404).json({error:"Contraseña incorrecta"});
+        return res.status(404).json({error:"Contraseña o Usuario incorrectos"});
       }
 
       const usuarioToken = usuario.toJSON();
@@ -169,8 +173,11 @@ const usuariosController = {
       usuario.contrasena = contrasenaHasheada;
       
       await usuario.save();
+
+      const usuarioData = usuario.toJSON();
+      delete usuarioData.contrasena;
   
-      return res.status(200).json({ message: "Usuario actualizado exitosamente", data: usuario});
+      return res.status(200).json({ message: "Usuario actualizado exitosamente", data: usuarioData});
     } catch (error) {
       console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
