@@ -7,7 +7,7 @@ import borrarDeCloudinary from '../utils/borrarDeCloudinary.js';
 const audiosController = {
   obtenerTodos: async (req, res) => {
     try {
-      const audios = await Aio.findAll()
+      const audios = await Audio.findAll();
       return res.status(200).json({message: audios}) 
     } catch (error) {
       console.log(error);
