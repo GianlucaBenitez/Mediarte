@@ -2,6 +2,7 @@
 import Usuario from "../models/Usuario.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import transporter from "../config/nodemailer.js";
 import {config} from "dotenv";
 config();
 const salt = Number(process.env.SALT)
@@ -96,6 +97,11 @@ const usuariosController = {
         errores.push("Contraseñas no coinciden");
       }
 
+      const emailEnUso = await Usuario.findOne({ where: { email: email } });
+      if (emailEnUso) {
+        return res.status(409).json({ error: "Email ya está en uso" });
+      }
+
       if (errores.length > 0) {
         return res.status(400).json({ error: errores });
       }
@@ -109,6 +115,15 @@ const usuariosController = {
 
       const usuarioData = usuarioNuevo.toJSON();
       delete usuarioData.contrasena;
+
+      await transporter.sendMail({
+        from: '"Mediarte" <mediarte2024@gmail.com>',
+        to: usuarioNuevo.email, 
+        subject: "Bienvenido a Mediarte ⋆౨ৎ˚⟡˖",
+        html: `
+        Muchas gracias ${usuarioNuevo.nombre} por registrarte en <b>Mediarte</b>
+        `,
+      });
   
       return res.status(200).json({
         message: "Usuario creado!",
