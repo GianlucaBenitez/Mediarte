@@ -97,7 +97,7 @@ const usuariosController = {
       }
 
       if (errores.length > 0) {
-        return res.status(400).json({ errores });
+        return res.status(400).json({ error: errores });
       }
 
       const contrasenaHasheada = await bcrypt.hash(contrasena, salt)
