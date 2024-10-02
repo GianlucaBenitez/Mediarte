@@ -55,8 +55,8 @@ const usuariosController = {
       if (!nombre) {
         errores.push("Nombre no puede estar vacío");
       }
-      if (nombre && nombre.length < 5) {
-        errores.push("Nombre debe tener al menos 5 caracteres");
+      if (nombre.length < 5 && nombre.length > 25) {
+        errores.push("Nombre debe tener entre 5 y 25 caracteres");
       }
       if (nombre && !/^[A-Za-z]+$/.test(nombre)) {
         errores.push("Nombre solo puede contener letras");
