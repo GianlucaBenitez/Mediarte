@@ -54,12 +54,13 @@ const usuariosController = {
       // Validaciones nombres
       if (!nombre) {
         errores.push("Nombre no puede estar vacío");
-      }
-      if (nombre.length < 5 && nombre.length > 25) {
-        errores.push("Nombre debe tener entre 5 y 25 caracteres");
-      }
-      if (nombre && !/^[A-Za-z]+$/.test(nombre)) {
-        errores.push("Nombre solo puede contener letras");
+      }else{
+        if (nombre.length < 5 && nombre.length > 25) {
+          errores.push("Nombre debe tener entre 5 y 25 caracteres");
+        }
+        if (nombre && !/^[A-Za-z]+$/.test(nombre)) {
+          errores.push("Nombre solo puede contener letras");
+        }
       }
 
       // Validación Email
@@ -123,6 +124,13 @@ const usuariosController = {
         html: `
         Muchas gracias ${usuarioNuevo.nombre} por registrarte en <b>Mediarte</b>
         `,
+      }, (error, info) => {
+        if (error) {
+          console.error("Error al enviar el correo:", error); // Imprimir el error exacto
+          return res.status(500).json({ error: "Error al enviar el correo" });
+        } else {
+          console.log("Correo enviado: ", info.response);
+        }
       });
   
       return res.status(200).json({
