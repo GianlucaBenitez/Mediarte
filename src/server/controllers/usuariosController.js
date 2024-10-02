@@ -44,32 +44,64 @@ const usuariosController = {
   
   registro: async (req, res) => {
     try {
-      const { nombre, email, contrasena, confirmarContrasena } = req.body
-  
+      const { nombre, email, contrasena, confirmarContrasena } = req.body;
+
+      const errores = [];
+
       // Validaciones
-      if (!nombre || !usuarioregex.test(nombre)) {
-        return res.status(401).json({error: "Nombre inválido"})
-      }
-      if (!email || !emailregex.test(email)) {
-        return res.status(401).json({error: "Email inválido"})
-      }
-      if (!contrasena || !contrasenaregex.test(contrasena)) {
-        return res.status(401).json({error: "Contrasena inválido"})
-      }
-      if (!confirmarContrasena){
-        return res.status(401).json({error: "El campo confirmar contrasena no puede estar vacio"})
-      }
-      if (contrasena !== confirmarContrasena) {
-        return res.status(400).json({error: "Las contraseñas no coinciden"});
-      }
   
-      const emailEnUso = await Usuario.findOne({ where: { email: email } });
-      if (emailEnUso) {
-        return res.status(409).json({ error: "Email ya está en uso" });
+      // Validaciones nombres
+      if (!nombre) {
+        errores.push("Nombre no puede estar vacío");
+      }
+      if (nombre && nombre.length < 5) {
+        errores.push("Nombre debe tener al menos 5 caracteres");
+      }
+      if (nombre && !/^[A-Za-z]+$/.test(nombre)) {
+        errores.push("Nombre solo puede contener letras");
+      }
+
+      // Validación Email
+      if (!email) {
+        errores.push("Email no puede estar vacío");
+      } else if (!emailregex.test(email)) {
+        errores.push("Email inválido");
+      }
+
+      // Validaciones de contraseña
+      if (!contrasena) {
+        errores.push("Contraseña no puede estar vacía");
+      } else {
+        if (contrasena.length < 8) {
+          errores.push("Contraseña debe tener al menos 8 caracteres");
+        }
+        if (!/[A-Z]/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos una letra mayúscula");
+        }
+        if (!/[a-z]/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos una letra minúscula");
+        }
+        if (!/\d/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos un número");
+        }
+        if (!/[!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"']/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos un carácter especial");
+        }
+      }
+
+      // Validaciones Confirmar Contraseña
+      if (!confirmarContrasena) {
+        errores.push("Confirmar Contraseña no puede estar vacío");
+      } else if (contrasena !== confirmarContrasena) {
+        errores.push("Contraseñas no coinciden");
+      }
+
+      if (errores.length > 0) {
+        return res.status(400).json({ errores });
       }
 
       const contrasenaHasheada = await bcrypt.hash(contrasena, salt)
-  
+      
       const usuarioNuevo = await Usuario.create({ 
         nombre: nombre, email: email, contrasena: contrasenaHasheada 
       });
