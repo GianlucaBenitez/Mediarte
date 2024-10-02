@@ -31,20 +31,18 @@ form.addEventListener("click", async function(e) {
         console.log(registroData);
 
         // Hacer la solicitud POST al backend
-        const response = await fetch("http://mediarte-api.vercel.app/usuarios/registro", {
+        const response = await fetch("https://mediarte-api.vercel.app/usuarios/registro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+                "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Credentials": true,
             },
             body: JSON.stringify(registroData)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        
 
         const result = await response.json();
+        console.log(result)
 
         if (response.ok) {
             // Registro exitoso
