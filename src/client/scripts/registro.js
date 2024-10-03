@@ -58,3 +58,29 @@ form.addEventListener("click", async function(e) {
         alert("Error en el servidor. Por favor, inténtelo de nuevo más tarde.");
     }
 });
+
+const veoContrasena = document.getElementById('mostrarContrasena');
+const veoContrasenac = document.getElementById('mostrarContrasenaC');
+const inputContrasena = document.getElementById("contrasena");
+const inputContrasenaC = document.getElementById("Ccontrasena");
+let click = false;
+
+veoContrasena.addEventListener('click', (e) => {
+    if (!click) {
+        inputContrasena.type = 'text';
+        click = true;
+    } else {
+        inputContrasena.type = 'password';
+        click = false;
+    }
+});
+
+veoContrasenac.addEventListener('click', (e) => {
+    if (!click) {
+        inputContrasenaC.type = 'text';
+        click = true;
+    } else {
+        inputContrasenaC.type = 'password';
+        click = false;
+    }
+});
