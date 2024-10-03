@@ -1,5 +1,5 @@
 const btnLogin = document.querySelector(".btn-login");
-    
+
 btnLogin.addEventListener("click", async () => {
     // Obtenemos los valores del input
     const email = document.getElementById("email").value;
@@ -12,7 +12,6 @@ btnLogin.addEventListener("click", async () => {
     }
 
     try {
-
         const dataLogin = {
             email: email,
             contrasena: contrasena
@@ -52,3 +51,17 @@ btnLogin.addEventListener("click", async () => {
     }
 });
 
+// Ver bupicontraseña
+const veoContrasena = document.getElementById('mostrarContrasena');
+const inputContrasena = document.getElementById("contrasena");
+let click = false;
+
+veoContrasena.addEventListener('click', (e) => {
+    if (!click) {
+        inputContrasena.type = 'text';
+        click = true;
+    } else {
+        inputContrasena.type = 'password';
+        click = false;
+    }
+});

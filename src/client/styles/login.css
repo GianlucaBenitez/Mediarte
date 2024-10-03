@@ -41,6 +41,8 @@ body {
     color: white;
 }
 
+
+
 /*------------ For small screens------------*/
 @media only screen and (max-width: 768px) {
     .box-area {
