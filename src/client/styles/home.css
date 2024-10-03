@@ -1,73 +1,98 @@
 /* Estilos generales del body */
 body {
-    background: url(fondoOficial.png) fixed no-repeat center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Contenedor para la imagen de fondo */
+.background-image {
+    background: url(fondoOficial.png) no-repeat center;
     background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
+    z-index: -1; 
+    transition: filter 1s ease-in-out; 
+}
+
+/* Estilos para el splash screen */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(8, 31, 60, 0.9);
+    z-index: 10;
+    flex-direction: column;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+}
+
+/* Estilo del nombre de la marca */
+.brand-name {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(96, 172, 234);
 }
 
 /* Estilos para la navbar */
 .navbar {
     background-color: white;
     height: 80px;
-    margin: 20px;
     border-radius: 16px;
     padding: 0.5rem;
+    margin-top: 20px;
+    width: auto;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Estilos para centrar el contenido en la navbar */
+.navbar-custom .container-fluid {
+    display: flex;
+    justify-content: start; /* Alinear navbar "Mediarte" a la izquierda */
+    padding: 0;
+}
+
+/* Estilos para la marca de la navbar */
 .navbar-brand {
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(96, 172, 234);
+    margin-right: 20px;
 }
 
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 16 16'%3E%3Cpath fill='rgb(96, 172, 234)' fill-rule='evenodd' d='M1.5 12.5a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13zm0-5a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13zm0-5a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13z'/%3E%3C/svg%3E");
-}
-
-/* Estilos para los enlaces de la navbar */
-.nav-link {
-    color: black;
-    font-weight: 500;
-    position: relative;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: rgb(96, 172, 234);
-}
-
-.nav-link::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background-color: rgb(96, 172, 234);
-    visibility: hidden;
-    transition: 0.3s ease-in-out;
-}
-
-.nav-link:hover::before {
-    width: 100%;
-    visibility: visible;
+/* Animación de la barra de navegación */
+#mainNavbar {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 /* Botones de Iniciar Sesión y Registrarse */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
 .login-button,
 .registro-button {
     background-color: rgb(200, 215, 228);
     color: black;
     font-size: 14px;
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 50px;
     text-decoration: none;
     transition: 0.3s background-color;
+    text-align: center;
 }
 
 .login-button:hover,
@@ -78,74 +103,127 @@ body {
 
 /* Estilos para la versión móvil */
 @media (max-width: 991px) {
-    body {
-        background: url(fondoCelular.jpg) fixed no-repeat center;
-        background-size: cover;
-        width: 100%;
-        height: 100vh;
-    }
-
-    .offcanvas-body {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-
     .auth-buttons {
         margin-top: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .auth-buttons .login-button,
     .auth-buttons .registro-button {
         width: 100%;
         margin-bottom: 10px;
-        text-align: center;
     }
 }
-
-/* Sidebar para móviles */
-@media (max-width: 991px) {
-    .sidebar {
-        background-color: rgba(255, 255, 255, 0.15); 
-        backdrop-filter: blur(10px); 
-        padding: 15px; 
-        border-radius: 10px; 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    }
-
-    .offcanvas-body {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-
-    .auth-buttons {
-        margin-top: auto;
-    }
-
-    .auth-buttons .login-button,
-    .auth-buttons .registro-button {
-        width: 100%;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-}
-
 
 /* Estilos para la versión de escritorio */
 @media (min-width: 992px) {
-    .navbar-nav {
-        display: flex;
-        align-items: center;
-        margin-left: auto;
-    }
-
     .auth-buttons {
-        display: none;
+        display: flex;
+        position: static;
+        margin-left: auto;
     }
 
     .login-button,
     .registro-button {
         margin-left: 10px;
+        padding: 10px 30px;
     }
+
+    /* Navbar "Mediarte" alineado a la izquierda en versión de escritorio */
+    .navbar-custom .container-fluid {
+        justify-content: start; /* Alinear a la izquierda */
+    }
+}
+
+/* Añadir desenfoque al fondo cuando aparezcan los botones */
+.background-image.blurred {
+    filter: blur(5px); 
+}
+
+/* Estilos para el recuadro central */
+.central-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; 
+    height: 60vh; 
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    z-index: 15;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 0;
+    display: none; 
+    padding: 20px;
+    overflow: hidden;
+}
+
+.central-box.active {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Sección de contenido dentro del recuadro */
+.content-box {
+    display: flex;
+    justify-content: space-between; /* Para alinear la imagen y el texto */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    flex-direction: column; /* Cambié a columna para que el texto quede arriba */
+}
+
+
+/* Estilos para la imagen */
+.image-section {
+    width: 30%; /* Ajustado para que la imagen ocupe el 30% del cuadro */
+    height: auto;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Estilos para el texto */
+.text-section {
+    width: 60%; /* El texto ocupa el 60% del cuadro */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start; /* Alinear texto al inicio horizontalmente */
+    text-align: left; /* Alinear el texto a la izquierda */
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+/* Estilos para el botón de flecha */
+.btn-arrow {
+    margin-top: 20px;
+    background-color: rgb(96, 172, 234);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 20px; /* Ajustado para que no quede tan pegado al borde */
+    transform: translateX(0); /* Quitar el centro y mover más a la izquierda */
+}
+
+.btn-arrow span {
+    margin-left: 10px;
+    font-size: 20px;
 }
