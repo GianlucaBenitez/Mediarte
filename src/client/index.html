@@ -16,9 +16,10 @@
   <div id="splashScreen" class="splash-screen d-flex justify-content-center align-items-center">
     <h1 class="brand-name">Mediarte</h1>
   </div>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="mainNavbar">
-    <div class="container-fluid justify-content-start"> <!-- Cambié justify-content-center a justify-content-start -->
+    <div class="container-fluid justify-content-start"> 
       <a class="navbar-brand" href="index.html">Mediarte</a>
     </div>
     <div class="auth-buttons d-none d-lg-flex position-absolute top-0 end-0 me-4 mt-3">
@@ -27,23 +28,25 @@
     </div>
   </nav>
 
-  <!-- Nuevo recuadro central con imagen, texto y botón -->
+  <!-- Recuadro central -->
   <div id="centralBox" class="central-box d-flex justify-content-center align-items-center">
-    <div class="content-box d-flex flex-column">
-      <!-- Texto centrado en la sección izquierda -->
-      <div class="text-section d-flex flex-column justify-content-center align-items-start"> <!-- Cambié align-items-center a align-items-start -->
+    <div class="content-box">
+      <!-- Sección de texto -->
+      <div class="text-section">
         <p id="centralText"></p>
       </div>
-      <!-- Imagen en la esquina inferior izquierda -->
-      <div class="image-section position-absolute bottom-0 start-0">
+
+      <!-- Sección de imagen -->
+      <div class="image-section">
         <img id="centralImage" src="styles/logo_mediarte.png" alt="Imagen central" />
       </div>
+
+      <!-- Botón de flecha -->
+      <button id="arrowButton" class="btn btn-arrow">Siguiente <span>&#8594;</span></button>
     </div>
-    <!-- Botón de flecha alineado a la izquierda inferior -->
-    <button id="arrowButton" class="btn btn-arrow position-absolute bottom-0 start-0 ms-4 mb-4">Siguiente <span>&#8594;</span></button> <!-- Añadí ms-4 para margen desde la izquierda y mb-4 para margen inferior -->
   </div>
 
-
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="scripts/home.js"></script>
 </body>

@@ -101,7 +101,7 @@ body {
     color: white;
 }
 
-/* Estilos para la versión móvil */
+/* Versión móvil */
 @media (max-width: 991px) {
     .auth-buttons {
         margin-top: auto;
@@ -116,7 +116,7 @@ body {
     }
 }
 
-/* Estilos para la versión de escritorio */
+/* Versión escritorio */
 @media (min-width: 992px) {
     .auth-buttons {
         display: flex;
@@ -132,7 +132,7 @@ body {
 
     /* Navbar "Mediarte" alineado a la izquierda en versión de escritorio */
     .navbar-custom .container-fluid {
-        justify-content: start; /* Alinear a la izquierda */
+        justify-content: start;
     }
 }
 
@@ -147,14 +147,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; 
-    height: 60vh; 
+    width: 80%;
+    height: 60vh;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     z-index: 15;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     opacity: 0;
-    display: none; 
+    display: none;
     padding: 20px;
     overflow: hidden;
 }
@@ -168,21 +168,23 @@ body {
 /* Sección de contenido dentro del recuadro */
 .content-box {
     display: flex;
-    justify-content: space-between; /* Para alinear la imagen y el texto */
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100%;
     position: relative;
-    flex-direction: column; /* Cambié a columna para que el texto quede arriba */
 }
-
 
 /* Estilos para la imagen */
 .image-section {
-    width: 30%; /* Ajustado para que la imagen ocupe el 30% del cuadro */
+    width: 30%;
     height: auto;
     position: absolute;
     bottom: 20px;
     left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .image-section img {
@@ -194,33 +196,27 @@ body {
 
 /* Estilos para el texto */
 .text-section {
-    width: 60%; /* El texto ocupa el 60% del cuadro */
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: start; /* Alinear texto al inicio horizontalmente */
-    text-align: left; /* Alinear el texto a la izquierda */
+    width: 100%;
+    text-align: center;
     font-family: 'Arial', sans-serif;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos para el botón de flecha */
 .btn-arrow {
-    margin-top: 20px;
     background-color: rgb(96, 172, 234);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 30px;
     font-size: 16px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
     position: absolute;
     bottom: 20px;
-    left: 20px; /* Ajustado para que no quede tan pegado al borde */
-    transform: translateX(0); /* Quitar el centro y mover más a la izquierda */
+    right: 20px;
+    cursor: pointer;
 }
 
 .btn-arrow span {
