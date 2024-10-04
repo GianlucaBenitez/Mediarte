@@ -218,6 +218,11 @@ body {
     cursor: pointer;
 }
 
+.btn-arrow:hover{
+    background-color: rgb(37, 56, 72);
+    color: white;
+}
+
 .btn-arrow span {
     margin-left: 10px;
     font-size: 20px;
