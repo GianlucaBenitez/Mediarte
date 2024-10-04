@@ -35,9 +35,9 @@ body {
 
 /* Estilo del nombre de la marca */
 .brand-name {
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Satisfy", cursive;
     color: rgb(96, 172, 234);
+    font-size: 4rem;
 }
 
 /* Estilos para la navbar */
@@ -66,8 +66,15 @@ body {
 /* Estilos para la marca de la navbar */
 .navbar-brand {
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Satisfy", cursive;
     color: rgb(96, 172, 234);
+    font-size: 2em;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: rgb(31, 90, 137);
 }
 
 /* Animación de la barra de navegación */
