@@ -36,7 +36,7 @@ body {
 /* Estilo del nombre de la marca */
 .brand-name {
     font-family: "Satisfy", cursive;
-    color: rgb(96, 172, 234);
+    color: rgb(255, 255, 255);
     font-size: 4rem;
 }
 
@@ -69,7 +69,6 @@ body {
     font-family: "Satisfy", cursive;
     color: rgb(96, 172, 234);
     font-size: 2em;
-    margin-left: 20px;
     transition: color 0.3s ease;
 }
 
