@@ -1,9 +1,7 @@
+import cloudinary from "../config/cloudinary.js";
+
 const subirACloudinary = async (req, res) => {
     const file = req.file;
-  
-    if (!file) {
-      return res.status(400).json({ error: "File not found" });
-    }
   
     const fName = file.originalname.split(".")[0];
   

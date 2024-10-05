@@ -58,7 +58,9 @@ const audiosController = {
           .json({ error: req.fileValidationError });
       }
 
-      const audio = await subirACloudinary(req, res);
+      if(!req.file){
+        return res.status(401).json({ error: "Debes adjuntar un archivo" });
+      }
 
       const { nombre_audio, tipo_meditacion } = req.body;
   
@@ -68,6 +70,8 @@ const audiosController = {
       if(!tipo_meditacion || nombre_audio.length > 50){
         return res.status(401).json({ error: "Tipo del audio inválido" });
       }
+
+      const audio = await subirACloudinary(req, res);
 
       const audioNuevo = await Audio.create({ 
         nombre_audio, 

@@ -11,9 +11,6 @@ const Audio = sequelize.define('audio', {
     nombre_audio: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        validate:{
-            isAlpha: true
-        }
     },
     tipo_meditacion: {
         type: Sequelize.STRING(50),
