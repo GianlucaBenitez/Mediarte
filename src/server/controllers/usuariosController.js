@@ -1,9 +1,10 @@
 // Importamos modelo de Usuario
 import Usuario from "../models/Usuario.js";
+import UsuarioTemporal from "../models/UsuarioTemporal.js"
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import transporter from "../config/nodemailer.js";
 import {config} from "dotenv";
+import enviarMail from "../utils/enviarMail.js";
 config();
 const salt = Number(process.env.SALT)
 
@@ -28,7 +29,7 @@ const usuariosController = {
   },
   
   obtener: async (req, res) => {
-      try {
+    try {
         const {id} = req.params;
         const usuario = await Usuario.findByPk(id)
         
@@ -37,112 +38,154 @@ const usuariosController = {
         }
   
         return res.status(200).json({message: "Usuario obtenido", data: usuario}) 
-      } catch (error) {
+    } catch (error) {
         console.log(error)
         return res.status(500).json({error: "Internal Server Error"})
-      }
+    }
   },
   
-    registro: async (req, res) => {
-      try {
-        const { nombre, email, contrasena, confirmarContrasena } = req.body;
-
-        const errores = [];
-
-        // Validaciones
-    
-        // Validaciones nombres
-        if (!nombre) {
-          errores.push("Nombre no puede estar vacío");
-        }else{
-          if (nombre.length < 5 || nombre.length > 25) {
-            errores.push("Nombre debe tener entre 5 y 25 caracteres");
-          }
-          if (nombre && !/^[A-Za-z]+$/.test(nombre)) {
-            errores.push("Nombre solo puede contener letras");
-          }
+  registro: async (req, res) => {
+    try {
+      const { nombre, email, contrasena, confirmarContrasena } = req.body;
+  
+      const errores = [];
+  
+      // Validaciones
+  
+      // Validaciones nombres
+      if (!nombre) {
+        errores.push("Nombre no puede estar vacío");
+      } else{
+        if (nombre.length < 5 || nombre.length > 25) {
+          errores.push("Nombre debe tener entre 5 y 25 caracteres");
         }
-
-        // Validación Email
-        if (!email) {
-          errores.push("Email no puede estar vacío");
-        } else if (!emailregex.test(email)) {
-          errores.push("Email inválido");
+        if (nombre && !/^[A-Za-z]+$/.test(nombre)) {
+          errores.push("Nombre solo puede contener letras");
         }
-
-        // Validaciones de contraseña
-        if (!contrasena) {
-          errores.push("Contraseña no puede estar vacía");
-        } else {
-          if (contrasena.length < 8) {
-            errores.push("Contraseña debe tener al menos 8 caracteres");
-          }
-          if (!/[A-Z]/.test(contrasena)) {
-            errores.push("Contraseña debe contener al menos una letra mayúscula");
-          }
-          if (!/[a-z]/.test(contrasena)) {
-            errores.push("Contraseña debe contener al menos una letra minúscula");
-          }
-          if (!/\d/.test(contrasena)) {
-            errores.push("Contraseña debe contener al menos un número");
-          }
-          if (!/[!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"']/.test(contrasena)) {
-            errores.push("Contraseña debe contener al menos un carácter especial");
-          }
-        }
-
-        // Validaciones Confirmar Contraseña
-        if (!confirmarContrasena) {
-          errores.push("Confirmar Contraseña no puede estar vacío");
-        } else if (contrasena !== confirmarContrasena) {
-          errores.push("Contraseñas no coinciden");
-        }
-
-        const emailEnUso = await Usuario.findOne({ where: { email: email } });
-        if (emailEnUso) {
-          return res.status(409).json({ error: "Email ya está en uso" });
-        }
-
-        if (errores.length > 0) {
-          return res.status(400).json({ error: errores });
-        }
-
-        const contrasenaHasheada = await bcrypt.hash(contrasena, salt)
-        
-        const usuarioNuevo = await Usuario.create({ 
-          nombre: nombre, email: email, contrasena: contrasenaHasheada 
-        });
-        usuarioNuevo.save();
-
-        const usuarioData = usuarioNuevo.toJSON();
-        delete usuarioData.contrasena;
-
-        await transporter.sendMail({
-          from: '"Mediarte" <mediarte2024@gmail.com>',
-          to: usuarioNuevo.email, 
-          subject: "Bienvenido a Mediarte ⋆౨ৎ˚⟡˖",
-          html: `
-          Muchas gracias ${usuarioNuevo.nombre} por registrarte en <b>Mediarte</b>
-          `,
-        }, (error, info) => {
-          if (error) {
-            console.error("Error al enviar el correo:", error); // Imprimir el error exacto
-            return res.status(500).json({ error: "Error al enviar el correo" });
-          } else {
-            console.log("Correo enviado: ", info.response);
-          }
-        });
-    
-        return res.status(200).json({
-          message: "Usuario creado!",
-          data: usuarioData
-        })
-    
-      } catch (error) {
-        console.log(error);
-        return res.status(500).json({error: "Internal Server Error"})
       }
-    },
+  
+      // Validación Email
+      if (!email) {
+        errores.push("Email no puede estar vacío");
+      } else if (!emailregex.test(email)) {
+        errores.push("Email inválido");
+      }
+  
+      // Validaciones de contraseña
+      if (!contrasena) {
+        errores.push("Contraseña no puede estar vacía");
+      } else {
+        if (contrasena.length < 8) {
+          errores.push("Contraseña debe tener al menos 8 caracteres");
+        }
+        if (!/[A-Z]/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos una letra mayúscula");
+        }
+        if (!/[a-z]/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos una letra minúscula");
+        }
+        if (!/\d/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos un número");
+        }
+        if (!/[!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"']/.test(contrasena)) {
+          errores.push("Contraseña debe contener al menos un carácter especial");
+        }
+      }
+  
+      // Validaciones Confirmar Contraseña
+      if (!confirmarContrasena) {
+        errores.push("Confirmar Contraseña no puede estar vacío");
+      } else if (contrasena !== confirmarContrasena) {
+        errores.push("Contraseñas no coinciden");
+      }
+  
+      const emailEnUso = await Usuario.findOne({ where: { email: email } });
+      if (emailEnUso) {
+        return res.status(409).json({ error: "Email ya está en uso" });
+      }
+  
+      if (errores.length > 0) {
+        return res.status(400).json({ error: errores });
+      }
+  
+      const contrasenaHasheada = await bcrypt.hash(contrasena, salt);
+
+      // Generar un codigo de 6 dígitos
+      const otpCodigo = Math.floor(100000 + Math.random() * 900000).toString();
+      const otpHasheado = await bcrypt.hash(otpCodigo, salt);
+
+      const existeUsuarioTemporal = await UsuarioTemporal.findOne({ where: { email } });
+      if(existeUsuarioTemporal){
+        await UsuarioTemporal.destroy({ where: { email } });
+      }
+  
+      await UsuarioTemporal.create({
+        email,
+        nombre,
+        contrasena: contrasenaHasheada,
+        otp: otpHasheado,
+        expiracion: new Date(Date.now() + 10 * 60 * 1000), // Código válido por 10 minutos
+      });
+ 
+      await enviarMail(
+        email,
+        "Código de Verificación de Mediarte",
+        `<p>Tu código de verificación es: <strong>${otpCodigo}</strong></p>
+        <p>Este código expirará en 10 minutos.</p>`
+      );
+  
+      return res.status(200).json({
+        message: "Un código de verificación ha sido enviado a tu correo! Verifica para crear la cuenta.",
+      });  
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
+
+  validar: async (req, res) => {
+    try {
+      const { email, codigo } = req.body;
+
+      const registroTemporal = await UsuarioTemporal.findOne({ where: { email } });
+
+      if (!registroTemporal) {
+        return res.status(400).json({ error: "Código inválido o ya ha expirado" });
+      }
+      if (registroTemporal.expiracion < new Date()) {
+        await UsuarioTemporal.destroy({ where: { email } });
+        return res.status(400).json({ error: "Código inválido o ya ha expirado" });
+      }
+
+      const otpCorrecto = bcrypt.compareSync(codigo, registroTemporal.otp);
+      if (!otpCorrecto) {
+        return res.status(400).json({ error: "Código inválido o ya ha expirado" });
+      }
+
+      const usuarioNuevo = await Usuario.create({
+        nombre: registroTemporal.nombre,
+        email: registroTemporal.email,
+        contrasena: registroTemporal.contrasena,
+      });
+      usuarioNuevo.save();
+
+      await UsuarioTemporal.destroy({ where: { email } });
+
+      await enviarMail(
+        usuarioNuevo.email, // Receptor
+        "Bienvenido a Mediarte ⋆౨ৎ˚⟡˖", // Titulo del Mail
+        `Muchas gracias ${usuarioNuevo.nombre} por registrarte en <b>Mediarte</b>`, //Contenido del mail
+      )
+
+      return res.status(200).json({
+        message: "Usuario creado!",
+        data: { email: usuarioNuevo.email, nombre: usuarioNuevo.nombre },
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  },
 
   login: async (req, res) => {
     try {
@@ -172,7 +215,7 @@ const usuariosController = {
 
       res.cookie("token",token,{
         httpOnly: true,
-        // secure: true,
+        secure: true,
         sameSite: "none",
       })
 
