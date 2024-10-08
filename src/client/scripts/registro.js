@@ -48,7 +48,7 @@ form.addEventListener("click", async function(e) {
             // Registro exitoso
             alert(result.message);
             // Redirigir o mostrar mensaje de éxito
-            window.location.href = "login.html"; // Redirige al login
+            window.location.href = `verificar.html?email=${encodeURIComponent(email)}`; // Verificacion de Codigo
         } else {
             // Error en el registro
             alert(result.error || "Error al registrar usuario");
