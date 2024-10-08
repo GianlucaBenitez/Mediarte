@@ -15,7 +15,7 @@ try{
             "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
             "Access-Control-Allow-Credentials": true,
         },
-        body: JSON.stringify(email, codigo)
+        body: JSON.stringify({email, codigo})
     })
 
     const result = await response.json();
