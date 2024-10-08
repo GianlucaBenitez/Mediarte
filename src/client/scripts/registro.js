@@ -37,7 +37,6 @@ form.addEventListener("click", async function(e) {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
                 "Access-Control-Allow-Credentials": true,
-            "Acces-Control-Allow-Methods":"PUT, POST, OPTIONS, GET, PATCH, DELETE"
             },
             body: JSON.stringify(registroData)
         })
