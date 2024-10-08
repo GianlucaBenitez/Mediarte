@@ -41,7 +41,7 @@ btnLogin.addEventListener("click", async () => {
             localStorage.setItem("token", data.data.token);
 
             // Redirigimos a la página principal o dashboard
-            window.location.href = "https://mediarte.vercel.app";
+            window.location.href = "https://mediarte.vercel.app/indexmenu.html";
         } else {
             alert(data.error || "Error en el inicio de sesión");
         }
