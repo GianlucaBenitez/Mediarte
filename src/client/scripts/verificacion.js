@@ -14,6 +14,7 @@ try{
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
             "Access-Control-Allow-Credentials": true,
+            "Acces-Control-Allow-Methods":"PUT, POST, OPTIONS, GET, PATCH, DELETE"
         },
         body: JSON.stringify(email, codigo)
     })
