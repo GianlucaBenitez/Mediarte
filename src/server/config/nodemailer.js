@@ -10,6 +10,6 @@ const transporter = nodemailer.createTransport({
       user: "mediarte2024@gmail.com",
       pass: process.env.EMAIL_PASSWORD,
     },
-  });
+});
 
-  export default transporter;
+export default transporter;

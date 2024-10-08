@@ -16,7 +16,7 @@ try{
             "Access-Control-Allow-Credentials": true,
             "Acces-Control-Allow-Methods":"PUT, POST, OPTIONS, GET, PATCH, DELETE"
         },
-        body: JSON.stringify(email, codigo)
+        body: JSON.stringify({email, codigo})
     })
 
     const result = await response.json();
