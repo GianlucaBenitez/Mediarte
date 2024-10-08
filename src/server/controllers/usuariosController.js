@@ -145,7 +145,9 @@ const usuariosController = {
 
   validar: async (req, res) => {
     try {
-      const { email, codigo } = req.body;
+      const { email } = req.body;
+      let { codigo } = req.body;
+      codigo = codigo.toString();
 
       const registroTemporal = await UsuarioTemporal.findOne({ where: { email } });
 
