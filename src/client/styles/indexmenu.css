@@ -47,9 +47,14 @@ body {
 /* Estilos para la marca de la navbar */
 .navbar-brand {
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Satisfy", cursive;
     color: rgb(96, 172, 234);
-    margin-right: 20px;
+    font-size: 2em;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: rgb(31, 90, 137);
 }
 
 /* Botón de Inicio */
