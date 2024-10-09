@@ -35,9 +35,9 @@ body {
 
 /* Estilo del nombre de la marca */
 .brand-name {
-    font-family: "Satisfy", cursive;
-    color: rgb(255, 255, 255);
-    font-size: 4rem;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(96, 172, 234);
 }
 
 /* Estilos para la navbar */
@@ -66,14 +66,9 @@ body {
 /* Estilos para la marca de la navbar */
 .navbar-brand {
     font-weight: bold;
-    font-family: "Satisfy", cursive;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(96, 172, 234);
-    font-size: 2em;
-    transition: color 0.3s ease;
-}
-
-.navbar-brand:hover {
-    color: rgb(31, 90, 137);
+    margin-right: 20px;
 }
 
 /* Animación de la barra de navegación */
@@ -152,18 +147,20 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 60vh;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
+    width: 70%;
+    max-width: 900px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco con opacidad */
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
     z-index: 15;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     opacity: 0;
     display: none;
-    padding: 20px;
-    overflow: hidden;
+    padding: 40px 30px; /* Espacio interior para un diseño más aireado */
 }
 
+/* Activar la caja */
 .central-box.active {
     display: flex;
     opacity: 1;
@@ -175,17 +172,19 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    position: relative;
 }
 
 /* Estilos para el texto */
 .text-section {
     width: 100%;
     text-align: center;
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
+    font-family: 'Satisfy', cursive; /* Fuente más fluida y agradable */
+    font-size: 22px; /* Tamaño de fuente más grande */
+    line-height: 1.6; /* Espaciado entre líneas para mejorar legibilidad */
+    color: #4a4a4a; /* Color de texto suave */
+    margin-bottom: 40px; /* Espacio debajo del texto */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,16 +195,25 @@ body {
     background-color: rgb(96, 172, 234);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 30px;
-    font-size: 16px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sombra en el botón */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-arrow:hover {
+    background-color: rgb(37, 56, 72);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn-arrow span {
     margin-left: 10px;
     font-size: 20px;
+}
+
+/* Transición suave al cambiar el contenido */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
