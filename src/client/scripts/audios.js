@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".container .row");
-    const path=window.location.pathname.split("/")
-    const tipo=path[path.length-1].split(".")[0]
+    //const path=window.location.pathname.split("/")
+    //const tipo=path[path.length-1].split(".")[0]
     
 
     // Función para obtener los audios de tipo "ansiedad" desde el servidor
     const obtenerAudios = async (tipo) => {
         try {
-            const response = await fetch('http://localhost:3000/audios/Ansiedad', { // https://mediarte-api.vercel.app
+            const response = await fetch(`https://mediarte-api.vercel.app/audios/${tipo}`, { 
                 method: "GET",
                 headers: {
                 "Content-Type": "application/json",
-                // "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
-                "Access-Control-Allow-Origin": "http://localhost:5501", 
+                "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
                 "Access-Control-Allow-Credentials": true,
                 },
             }); 
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="card-body">
                         <h4 class="card-title">${audio.nombre_audio}</h4>
                         <p class="card-text">${audio.tipo_meditacion}</p>
-                        <button class="btn-save">✦</button>
+                        <button class="btn-save" data-id="${audio.id_audio}">✦</button>
                         <audio controls class="mp3-audio">
                             <source src="${audio.url_audio}" type="audio/mp3">
                             Tu navegador no soporta audios.
