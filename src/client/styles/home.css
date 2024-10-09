@@ -8,7 +8,7 @@ body {
 
 /* Contenedor para la imagen de fondo */
 .background-image {
-    background: url(fondoOficial.png) no-repeat center;
+    background: url(fondoOficial.png) no-repeat center; 
     background-size: cover;
     position: fixed;
     top: 0;
@@ -35,9 +35,9 @@ body {
 
 /* Estilo del nombre de la marca */
 .brand-name {
-    font-family: "Satisfy", cursive;
-    color: rgb(255, 255, 255);
-    font-size: 4rem;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(96, 172, 234);
 }
 
 /* Estilos para la navbar */
@@ -66,14 +66,9 @@ body {
 /* Estilos para la marca de la navbar */
 .navbar-brand {
     font-weight: bold;
-    font-family: "Satisfy", cursive;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(96, 172, 234);
-    font-size: 2em;
-    transition: color 0.3s ease;
-}
-
-.navbar-brand:hover {
-    color: rgb(31, 90, 137);
+    margin-right: 20px;
 }
 
 /* Animación de la barra de navegación */
@@ -180,25 +175,6 @@ body {
     position: relative;
 }
 
-/* Estilos para la imagen */
-.image-section {
-    width: 30%;
-    height: auto;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-section img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 12px;
-}
-
 /* Estilos para el texto */
 .text-section {
     width: 100%;
@@ -222,11 +198,6 @@ body {
     bottom: 20px;
     right: 20px;
     cursor: pointer;
-}
-
-.btn-arrow:hover{
-    background-color: rgb(37, 56, 72);
-    color: white;
 }
 
 .btn-arrow span {

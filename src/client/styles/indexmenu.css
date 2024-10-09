@@ -52,14 +52,8 @@ body {
     margin-right: 20px;
 }
 
-/* Botones de Iniciar Sesión y Registrarse */
-.auth-buttons {
-    display: flex;
-    align-items: center;
-}
-
-.login-button,
-.registro-button {
+/* Botón de Inicio */
+.inicio-button {
     background-color: rgb(200, 215, 228);
     color: black;
     font-size: 14px;
@@ -70,8 +64,72 @@ body {
     text-align: center;
 }
 
-.login-button:hover,
-.registro-button:hover {
+.inicio-button:hover {
     background-color: rgb(37, 56, 72);
     color: white;
+}
+
+/* Estilos para la caja central */
+.central-box {
+    margin-top: 140px;
+    padding: 30px;
+    width: 85%; /* Mantener el ancho grande */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Título central sobre las carrds */
+h2 {
+    font-family: 'Satisfy', cursive;
+    color: rgb(37, 56, 72);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Ajuste de columnas para más espacio */
+.row {
+    justify-content: center;
+    gap: 30px; /* Espacio adicional entre carrds */
+}
+
+/* Estilos para las carrds */
+.meditation-card {
+    background: rgba(200, 215, 228, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+    width: 200px;
+    height: 200px; /* Cuadradas */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Imagen cuadrada */
+.card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Título debajo de la imagen */
+.meditation-card h3 {
+    font-family: 'Satisfy', cursive;
+    color: rgb(37, 56, 72);
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Animación al acercar el cursor */
+.meditation-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(96, 172, 234, 0.7);
+    backdrop-filter: blur(15px);
+    cursor: pointer;
 }

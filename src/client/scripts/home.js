@@ -33,13 +33,6 @@ window.onload = function() {
     const textElement = document.getElementById("centralText");
     const arrowButton = document.getElementById("arrowButton");
 
-    // Lista de imágenes y textos para la rotación
-    const contentList = [
-        { image: 'styles/logo_mediarte.png', text: 'ejemplo de texto jjk' },
-        { image: 'styles/logo_mediarte.png', text: 'ejemplo de texto 2' },
-        { image: 'styles/logo_mediarte.png', text: 'ejemplo de texto 3' }
-    ];
-
     let currentIndex = 0;
 
     // Función para actualizar el contenido (imagen y texto)
