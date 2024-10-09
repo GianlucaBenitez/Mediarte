@@ -10,6 +10,7 @@ import verificarToken from '../middleware/verificarToken.js'
 
 // rutas
 router.get("/", audiosController.obtenerTodos);
+router.get("/obtenerCategorias", audiosController.obtenerCategorias);
 router.get("/:tipo", audiosController.obtenerPorTipo);
 router.get("/obtenerId/:id_audio", audiosController.obtenerPorId);
 router.put("/:id_audio", verificarToken, upload, audiosController.actualizar);

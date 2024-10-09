@@ -2,6 +2,7 @@
 import Audio from '../models/Audio.js';
 import subirACloudinary from '../utils/subirACloudinary.js';
 import borrarDeCloudinary from '../utils/borrarDeCloudinary.js';
+import { Sequelize } from 'sequelize';
 
 // Controlador de audios
 const audiosController = {
@@ -40,6 +41,21 @@ const audiosController = {
       }
         
       return res.status(200).json({message: audio}) 
+    }catch (error) {
+      console.log(error);
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
+
+  obtenerCategorias: async (req, res) => {
+    try {
+      const categorias = await Audio.findAll({
+        attributes: [
+          [Sequelize.fn('DISTINCT', Sequelize.col('tipo_meditacion')) ,'tipo_meditacion'],
+      ]
+      });
+        
+      return res.status(200).json({message: `Se obtuvieron ${categorias.length} categorias`, data: categorias}) 
     }catch (error) {
       console.log(error);
       return res.status(500).json({error: "Internal Server Error"})
