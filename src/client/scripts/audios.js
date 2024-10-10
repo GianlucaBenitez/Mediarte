@@ -24,7 +24,7 @@
         }
     };
 
-    // Función para renderizar audios
+    // Función para mostrar audios
     const renderizarAudios = (audios) => {
         container.innerHTML = ""; 
 
