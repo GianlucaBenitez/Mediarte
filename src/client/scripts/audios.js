@@ -1,8 +1,6 @@
     const container = document.querySelector(".container .row");
     const cards = document.querySelectorAll('.meditacion');
     const guardadosCard = document.querySelectorAll('.guardados');
-    console.log(guardadosCard);
-    console.log(cards);
 
     const obtenerAudios = async (tipo) => {
         try {
@@ -65,7 +63,6 @@
             window.location.href = `audio.html?tipo=${encodeURIComponent(tipo)}`;
          }));
     }
-
     console.log(window.location.pathname)
 
     if(window.location.pathname == "/audio.html"){
@@ -74,3 +71,8 @@
         obtenerAudios(tipo);
     }
 
+    if(guardadosCard){
+        guardadosCard.forEach(guardado.addEventListener('click', async function(e) {
+            window.location.href = "guardados.html";
+        }))
+    }
