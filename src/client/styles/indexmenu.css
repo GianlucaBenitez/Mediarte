@@ -79,7 +79,8 @@ body {
     margin-top: 140px;
     padding: 30px;
     width: 85%; /* Mantener el ancho grande */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -87,9 +88,10 @@ body {
 
 /* Título central sobre las carrds */
 h2 {
-    font-family: "Satisfy", cursive;
-    color: rgb(37, 56, 72);
-    font-size: 2.5rem;
+    font-family: "Marcellus", serif;
+    font-size: 28px;
+    color:rgb(37, 56, 72);
+    font-weight: bold;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -102,14 +104,14 @@ h2 {
 
 /* Estilos para las carrds */
 .meditation-card {
-    background: rgba(200, 215, 228, 0.6);
+    background-color: rgba(67, 105, 228, 0.616);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 10px;
     text-align: center;
     transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
-    width: 200px;
-    height: 200px; /* Cuadradas */
+    width: 200px; /* Ajusta este valor según lo que necesites */
+    height: 260px; /* Ajusta este valor para controlar la altura total */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -125,16 +127,22 @@ h2 {
 
 /* Título debajo de la imagen */
 .meditation-card h3 {
-    font-family: 'Satisfy', cursive;
-    color: rgb(37, 56, 72);
+    font-family: "Marcellus", serif;
+    color: rgb(255, 255, 255);
     font-size: 1.2rem;
     margin-top: 10px;
+    margin-bottom: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /
 }
 
 /* Animación al acercar el cursor */
 .meditation-card:hover {
     transform: scale(1.05);
-    background-color: rgba(96, 172, 234, 0.7);
+    background-color: rgba(39, 52, 89, 0.622);
     backdrop-filter: blur(15px);
     cursor: pointer;
 }
