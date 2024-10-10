@@ -22,16 +22,21 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="mainNavbar">
-    <div class="container-fluid justify-content-start"> 
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom" id="mainNavbar">
+    <div class="container-fluid justify-content-between"> 
       <a class="navbar-brand" href="index.html">
         <img src="styles/logo_mediarte.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
         Mediarte
       </a>
-    </div>
-    <div class="auth-buttons d-none d-lg-flex position-absolute top-0 end-0 me-4 mt-3">
-      <a class="btn login-button me-2" href="login.html">Iniciar Sesion</a>
-      <a class="btn registro-button" href="registrarse.html">Registrarse</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="auth-buttons ms-auto">
+          <a class="btn login-button me-2" href="login.html">Iniciar Sesion</a>
+          <a class="btn registro-button" href="registrarse.html">Registrarse</a>
+        </div>
+      </div>
     </div>
   </nav>
 
