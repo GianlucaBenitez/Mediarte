@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import cookieParser from "cookie-parser";
-import cron from "./utils/eliminarUsuariosTemporales.js";
 
 const app = express();
 

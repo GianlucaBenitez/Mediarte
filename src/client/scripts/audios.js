@@ -1,12 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".container .row");
-    //const path=window.location.pathname.split("/")
-    //const tipo=path[path.length-1].split(".")[0]
-    
+    const cards = document.querySelectorAll('.meditacion');
 
-    // Función para obtener los audios de tipo "ansiedad" desde el servidor
     const obtenerAudios = async (tipo) => {
         try {
+            console.log(tipo);  
             const response = await fetch(`https://mediarte-api.vercel.app/audios/${tipo}`, { 
                 method: "GET",
                 headers: {
@@ -59,6 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Llamar a la función para obtener y mostrar los audios de tipo "ansiedad"
-    obtenerAudios();
-});
+    if(cards){
+        cards.forEach(card => card.addEventListener('click', async function(e) {
+            let tipo = e.target.classList[1]; 
+            window.location.href = `audio.html?tipo=${encodeURIComponent(tipo)}`;
+         }));
+    }
+
+    console.log(window.location.pathname)
+
+    if(window.location.pathname == "https://mediarte.vercel.app/audio.html"){
+        const params = new URLSearchParams(window.location.search); 
+        const tipo = params.get("tipo");
+        obtenerAudios(tipo);
+    }
