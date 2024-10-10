@@ -18,7 +18,7 @@
 
             const data = await response.json();
             const audios = data.message; 
-            renderizarAudios(audios);
+            renderizarAudios(audios, tipo);
         } catch (error) {
             console.error("Error fetching audios:", error);
             container.innerHTML = `<p class="text-danger">Error al cargar los audios de ansiedad. Intenta de nuevo más tarde.</p>`;
@@ -40,7 +40,7 @@
 
             card.innerHTML = `
                 <div class="card">
-                    <img class="card-img-top mp3-cover" src="https://res.cloudinary.com/de2ggefyf/image/upload/v1728488246/imagenes/Ansiedad.jpg" alt="${audio.nombre_audio}">
+                    <img class="card-img-top mp3-cover" src="https://res.cloudinary.com/de2ggefyf/image/upload/v1728488246/imagenes/${tipo}.jpg" alt="${audio.nombre_audio}">
                     <div class="card-body">
                         <h4 class="card-title">${audio.nombre_audio}</h4>
                         <p class="card-text">${audio.tipo_meditacion}</p>
