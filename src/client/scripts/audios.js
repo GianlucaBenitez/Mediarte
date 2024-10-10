@@ -72,7 +72,7 @@
     }
 
     if(guardadosCard){
-        guardadosCard.forEach(guardado.addEventListener('click', async function(e) {
+        guardadosCard.forEach(guardado => guardado.addEventListener('click', async function(e) {
             window.location.href = "guardados.html";
         }))
     }
