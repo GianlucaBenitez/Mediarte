@@ -1,7 +1,7 @@
 const userId = localStorage.getItem("token"); 
   
 // URL base de la API
-const app = "https://mediarte-api.vercel.app";
+const app = "http://localhost:3000";
 
 // Función para obtener todos los audios guardados por el usuario
 const obtenerAudiosGuardados = async () => {
@@ -10,7 +10,7 @@ const obtenerAudiosGuardados = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+        "Access-Control-Allow-Origin": "http://localhost:5501",
         "Access-Control-Allow-Credentials": true,
       },
     });
@@ -20,7 +20,7 @@ const obtenerAudiosGuardados = async () => {
     }
 
     const data = await response.json();
-    renderizarAudios(data.data);
+    mostrarAudios(data.data);
   } catch (error) {
     console.error("Error al obtener los audios guardados:", error);
   }
@@ -33,7 +33,7 @@ const guardarAudio = async (idAudio) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+        "Access-Control-Allow-Origin": "http://localhost:5501",
         "Access-Control-Allow-Credentials": true,
 
       },
@@ -53,7 +53,7 @@ const guardarAudio = async (idAudio) => {
 };
 
 // Función para renderizar los audios guardados en la interfaz
-const renderizarAudios = (audios) => {
+const mostrarAudios = (audios) => {
   const container = document.querySelector(".container .row");
   container.innerHTML = ""; // Limpia el contenedor antes de agregar nuevos elementos
 
@@ -77,13 +77,16 @@ const renderizarAudios = (audios) => {
   });
 }
 
+
 if(window.location.pathname == "/guardados.html"){
+  mostrarAudios(audios);
+  }
+
+if(window.location.pathname == "/audio.html"){
 document.querySelectorAll(".btn-save").forEach((button) => {
   button.addEventListener("click", () => {
-    window.location.href = "https://mediarte.vercel.app/guardados.html";
     const idAudio = button.getAttribute("data-id"); 
     guardarAudio(idAudio);
-    renderizarAudios();
   });
 });
 }
