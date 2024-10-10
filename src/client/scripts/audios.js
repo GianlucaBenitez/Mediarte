@@ -2,6 +2,7 @@
     const cards = document.querySelectorAll('.meditacion');
     const guardadosCard = document.querySelectorAll('.guardados');
     console.log(guardadosCard);
+    console.log(cards);
 
     const obtenerAudios = async (tipo) => {
         try {
