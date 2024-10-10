@@ -65,7 +65,7 @@
 
     console.log(window.location.pathname)
 
-    if(window.location.pathname == "https://mediarte.vercel.app/audio.html"){
+    if(window.location.pathname == "/audio.html"){
         const params = new URLSearchParams(window.location.search); 
         const tipo = params.get("tipo");
         obtenerAudios(tipo);
