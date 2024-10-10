@@ -35,9 +35,9 @@ body {
 
 /* Estilo del nombre de la marca */
 .brand-name {
-    font-weight: bold;
     font-family: "Satisfy", cursive;
-    color: rgb(96, 172, 234);
+    color: rgb(254, 254, 254);
+    font-size: 8em;
 }
 
 /* Estilos para la navbar */
@@ -142,7 +142,8 @@ body {
     transform: translate(-50%, -50%);
     width: 70%;
     max-width: 900px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgb(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
     z-index: 15;
@@ -170,11 +171,10 @@ body {
 /* Estilos para el texto */
 .text-section {
     width: 100%;
-    text-align: center;
-    font-family: "Lato", sans-serif;
+    font-family: "Marcellus", serif;
     font-size: 28px;
     line-height: 1.6;
-    color: #4a4a4a;
+    color:rgb(8, 43, 73);
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
@@ -184,7 +184,7 @@ body {
 /* Estilos para el botón de flecha */
 .btn-arrow {
     background-color: rgb(96, 172, 234);
-    color: white;
+    color: rgb(8, 43, 73);
     border: none;
     padding: 12px 25px;
     border-radius: 30px;
@@ -194,6 +194,7 @@ body {
 }
 
 .btn-arrow:hover {
+    color: white;
     background-color: rgb(0, 67, 122);
     box-shadow: 0px 6px 20px hsla(247, 85%, 64%, 0.2);
 }
