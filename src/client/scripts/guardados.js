@@ -75,41 +75,9 @@ const renderizarAudios = (audios) => {
     `;
     container.appendChild(card);
   });
+}
 
-  // Agrega el evento para eliminar de guardados
-  document.querySelectorAll(".btn-delete").forEach((button) => {
-    button.addEventListener("click", () => {
-      const idAudio = button.getAttribute("data-id");
-      eliminarAudio(idAudio);
-    });
-  });
-};
-
-// Función para eliminar un audio de los guardados
-const eliminarAudio = async (idAudio) => {
-  try {
-    const response = await fetch(`${apiUrl}/guardados/${userId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
-        "Access-Control-Allow-Credentials": true,
-      },
-      body: JSON.stringify({ id_audio: idAudio }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Error al eliminar el audio:", errorData.error);
-    } else {
-      console.log("Audio eliminado de guardados.");
-      obtenerAudiosGuardados(); // Actualiza la lista de audios guardados
-    }
-  } catch (error) {
-    console.error("Error al eliminar el audio:", error);
-  }
-};
-
+if(window.location.pathname == "/guardados.html"){
 document.querySelectorAll(".btn-save").forEach((button) => {
   button.addEventListener("click", () => {
     window.location.href = "https://mediarte.vercel.app/guardados.html";
@@ -118,13 +86,6 @@ document.querySelectorAll(".btn-save").forEach((button) => {
     renderizarAudios();
   });
 });
-
-// Llama a la función para obtener los audios guardados al cargar la página
-if (userId) {
-  obtenerAudiosGuardados();
-} else {
-  console.error("No se ha encontrado el ID del usuario.");
 }
-
 
   

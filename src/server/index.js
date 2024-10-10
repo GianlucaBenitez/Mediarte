@@ -14,6 +14,7 @@ app.use(
     cors({
       credentials: true,
       origin: "https://mediarte.vercel.app",
+      //origin: "http://localhost:5501",
       methods: "GET,OPTIONS,PUT,PATCH,POST,DELETE",
     })
   );
