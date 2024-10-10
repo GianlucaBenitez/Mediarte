@@ -5,11 +5,8 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
-
-.container {
-    margin-top: 100px; 
 }
 
 /* Contenedor para la imagen de fondo */
@@ -30,13 +27,13 @@ body {
     height: 80px;
     border-radius: 16px;
     padding: 0.5rem;
+    margin-top: 20px;
     width: 70%;
     max-width: 900px;
     margin: 20px auto 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
 }
 
 /* Estilos para centrar el contenido en la navbar */
@@ -45,7 +42,6 @@ body {
     justify-content: center;
     padding: 0;
 }
-
 
 /* Estilos para la marca de la navbar */
 .navbar-brand {
@@ -93,9 +89,9 @@ body {
 }
 
 .row {
-    gap: 50px;  /* Espacio entre las tarjetas */
-    margin: 30px 0; /* Espacio entre la fila y otros elementos */
-    flex-wrap: wrap; /* Asegúrate de que las tarjetas se distribuyan bien en pantallas más pequeñas */
+    gap: 50px;  
+    margin: 30px 0; 
+    flex-wrap: wrap; 
 }
 
 .card-image {
