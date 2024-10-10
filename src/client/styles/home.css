@@ -22,7 +22,7 @@ body {
 /* Estilos para el splash screen */
 .splash-screen {
     position: fixed;
-    inset: 0; 
+    inset: 0;
     background-color: rgba(8, 31, 60, 0.9);
     z-index: 10;
     display: flex;
@@ -42,7 +42,7 @@ body {
 
 @media (max-width: 1200px) and (min-width: 300px) {
     .brand-name {
-        font-size: 30px; 
+        font-size: 30px;
     }
 }
 
@@ -53,12 +53,7 @@ body {
     border-radius: 16px;
     padding: 0.5rem;
     margin-top: 20px;
-    width: 70%;
-    max-width: 900px;
-    margin: 20px auto 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    z-index: 10;
 }
 
 .navbar-custom .container-fluid {
@@ -122,7 +117,7 @@ body {
     transform: translate(-50%, -50%);
     width: 70%;
     max-width: 900px;
-    background-color: rgb(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
@@ -131,6 +126,7 @@ body {
     opacity: 0;
     display: none;
     padding: 40px 30px;
+    margin-top: 100px; /* Evita que el recuadro se superponga con la navbar */
 }
 
 .central-box.active {
@@ -154,7 +150,7 @@ body {
     font-family: "Marcellus", serif;
     font-size: 28px;
     line-height: 1.6;
-    color:rgb(8, 43, 73);
+    color: rgb(8, 43, 73);
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
@@ -181,5 +177,44 @@ body {
 
 .btn-arrow span {
     margin-left: 10px;
-    font-size: 20px;
+}
+
+/* Medias queries para pantallas pequeñas */
+@media (max-width: 576px) {
+    .central-box {
+        width: 90%;
+        padding: 20px;
+        margin-top: 120px; /* Ajusta el margen superior en dispositivos móviles */
+    }
+
+    .text-section {
+        font-size: 20px;
+    }
+
+    .btn-arrow {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .navbar {
+        height: auto;
+    }
+
+    .navbar-brand {
+        font-size: 1.5em;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+    }
+
+    .login-button, .registro-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Ocultar splash screen cuando se navega a otras páginas */
+.splash-screen.fade-out {
+    opacity: 0;
 }
