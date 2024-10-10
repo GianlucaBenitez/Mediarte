@@ -1,4 +1,4 @@
-    const container = document.querySelector(".container .row");
+    const container = document.querySelector("#audiosContainer"); 
     const cards = document.querySelectorAll('.meditacion');
     const guardadosCard = document.querySelectorAll('.guardados');
 
