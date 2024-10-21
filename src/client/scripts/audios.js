@@ -1,4 +1,4 @@
-    const container = document.querySelector(".container"); 
+    const container = document.querySelector("#audiosContainer"); 
     console.log(container);
     const cards = document.querySelectorAll('.meditation-card');
     console.log(cards);
