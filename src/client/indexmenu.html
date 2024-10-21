@@ -3,71 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles/indexmenu.css">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/menu.css">
   <link rel="icon" href="styles/logo_mediarte.png" type="image/x-icon">
   <title>Mediarte</title>
 </head>
 <body>
-
-  <!-- fondo -->
-  <div class="background-image"></div>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-    <div class="container-fluid justify-content-start"> 
-      <a class="navbar-brand" href="index.html">
-        <img src="styles/logo_mediarte.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
-        Mediarte
-      </a>
-    </div>
-    <div class="auth-buttons d-none d-lg-flex position-absolute top-0 end-0 me-4 mt-3">
-      <a class="btn inicio-button" href="index.html">Inicio</a>
-      <a class="btn menu-button" href="indexmenu.html">Menu</a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand me-auto" href="index.html">
+        <img src="styles/logo_mediarte.png" alt="Logo" width="50" height="50" class="d-inline-block">
+        Mediarte</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mediarte</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column align-items-center">
+          <div class="celular-buttons mt-auto d-lg-none d-flex flex-column position-absolute top-50 align-items-center">
+            <a class="btn login-button mb-2" href="index.html">Inicio</a>
+            <a class="btn registro-button" href="indexmenuP.html">Menu</a>
+          </div>
+        </div>        
+      </div>
+      <div class="d-none d-lg-flex">
+        <a class="btn login-button me-2" href="index.html">Inicio</a>
+        <a class="btn registro-button" href="indexmenu.html">Menu</a>
+      </div>
     </div>
   </nav>
 
-  <!-- recuadro y cards -->
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="meditacion Ansiedad col-lg-2 col-md-3 col-sm-6">
+  <!-- Cards Section -->
+  <div class="container mt-4">
+    <div class="row d-flex flex-wrap justify-content-center gap-4">
         <div class="meditation-card Ansiedad">
-          <img src="styles/ansiedadCard.jpg" alt="Meditación de Ansiedad" class="card-image Ansiedad">
-          <h3 class="a Ansiedad">Meditación de Ansiedad</h3>
+          <img src="styles/ansiedadCard.jpg" class="card-image Ansiedad" alt="Meditacion de Ansiedad">
+          <h5 class="card-title Ansiedad">¿Sientes Ansiedad?</h5>
         </div>
-      </div>
-      <div class="meditacion Estres col-lg-2 col-md-3 col-sm-6">
         <div class="meditation-card Estres">
-          <img src="styles/estresCard.jpg" alt="Meditación de Estrés" class="card-image Estres">
-          <h3 class="a Estres">Meditación de Estrés</h3>
+          <img src="styles/estresCard.jpg" class="card-image Estres" alt="Meditacion de Estres">
+          <h5 class="card-title Estres">¿Sientes Estres?</h5>
         </div>
-      </div>
-      <div class="meditacion Insomnio col-lg-2 col-md-3 col-sm-6">
         <div class="meditation-card Insomnio">
-          <img src="styles/insomioCard.jpg" alt="Meditación de Insomnio" class="card-image Insomnio">
-          <h3 class="a Insomnio">Meditación de Insomnio</h3>
+          <img src="styles/insomioCard.jpg" class="card-image Insomnio" alt="Meditacion de Insomnio">
+          <h5 class="card-title Insomnio">¿Tienes Insomnio?</h5>
         </div>
-      </div>
-      <div class="meditacion Panico col-lg-2 col-md-3 col-sm-6">
-        <div class="meditation-card Panico">
-          <img src="styles/panicoCard.jpg" alt="Meditación de Pánico" class="card-image Panico">
-          <h3 class="a Panico">Meditación de Pánico</h3>
+        <div class="meditation-card Estres">
+          <img src="styles/ansiedadCard.jpg" class="card-image Estres" alt="Meditacion de Estres">
+          <h5 class="card-title Estres">¿Sientes Estres?</h5>
         </div>
-      </div>
-      <!--<div class="guardados col-lg-2 col-md-3 col-sm-6">
-        <div class="guardados meditation-card">
-          <img src="styles/guardadoCard.jpeg" alt="Meditaciones Favoritas" class="guardados card-image">
-          <h3 class="guardados">Meditaciones Favoritas</h3>
+        <div class="meditation-card Guardados">
+          <img src="styles/guardadoCard.jpeg" class="card-image Guardados" alt="Guardados">
+          <h5 class="card-title Guardaddos">Favoritos</h5>
         </div>
-      </div>-->
     </div>
   </div>
 
-  <script src="scripts/audios.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
