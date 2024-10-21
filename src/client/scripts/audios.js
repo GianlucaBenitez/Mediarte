@@ -1,6 +1,7 @@
     const container = document.querySelector(".container"); 
     console.log(container);
-    const cards = document.querySelectorAll('.meditacion');
+    const cards = document.querySelectorAll('.meditation');
+    
     const guardadosCard = document.querySelectorAll('.guardados');
 
     const obtenerAudios = async (tipo) => {
