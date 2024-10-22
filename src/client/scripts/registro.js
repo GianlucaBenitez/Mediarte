@@ -5,12 +5,13 @@ form.addEventListener("click", async function(e) {
     e.preventDefault();
 
     // Obtener los valores de los campos del formulario
+    const nombre = document.getElementById("nombre").value;
     const email = document.getElementById("email").value;
     const contrasena = document.getElementById("contrasena").value;
     const confirmarContrasena = document.getElementById("Ccontrasena").value;
 
     // Validar campos antes de enviar 
-    if (!email || !contrasena || !confirmarContrasena) {
+    if (!nombre ||!email || !contrasena || !confirmarContrasena) {
         return alert("Todos los campos son obligatorios");
     }
 
@@ -21,6 +22,7 @@ form.addEventListener("click", async function(e) {
     try {
         // Crear objeto con los datos del formulario
         const registroData = {
+            nombre: nombre,
             email: email,
             contrasena: contrasena,
             confirmarContrasena: confirmarContrasena
