@@ -219,6 +219,7 @@ const usuariosController = {
         httpOnly: true,
         secure: true,
         sameSite: "none",
+        domain: ".mediarte.vercel.app"
       })
 
       return res.status(200).json({message: "Login exitoso", data: {usuarioToken, token}})
