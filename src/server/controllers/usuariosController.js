@@ -216,7 +216,6 @@ const usuariosController = {
       const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "24h"});
 
       res.cookie("token",token,{
-        httpOnly: true,
         secure: true,
         sameSite: "none",
         domain: ".mediarte.vercel.app"
