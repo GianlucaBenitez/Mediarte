@@ -25,8 +25,6 @@ btnLogin.addEventListener("click", async () => {
             credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
-                "Access-Control-Allow-Credentials": true,
             },
             body: JSON.stringify(dataLogin)
         });

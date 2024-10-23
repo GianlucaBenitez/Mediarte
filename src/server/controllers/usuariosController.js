@@ -216,9 +216,8 @@ const usuariosController = {
       const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "24h"});
 
       res.cookie("token",token,{
-        secure: true,
-        sameSite: "none",
-        domain: ".mediarte.vercel.app"
+        // secure: true,
+        sameSite: "lax",
       })
 
       return res.status(200).json({message: "Login exitoso", data: {usuarioToken, token}})
