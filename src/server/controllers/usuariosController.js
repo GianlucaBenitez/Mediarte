@@ -213,12 +213,12 @@ const usuariosController = {
       const usuarioToken = usuario.toJSON();
       delete usuarioToken.contrasena;
 
-      const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "1h"});
+      const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "24h"});
 
       res.cookie("token",token,{
-        httpOnly: true,
         secure: true,
         sameSite: "none",
+        domain: ".mediarte.vercel.app"
       })
 
       return res.status(200).json({message: "Login exitoso", data: {usuarioToken, token}})

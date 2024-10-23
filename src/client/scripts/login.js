@@ -22,6 +22,7 @@ btnLogin.addEventListener("click", async () => {
         // Hacemos el fetch al backend usando el método POST
         const response = await fetch("https://mediarte-api.vercel.app/usuarios/login", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
