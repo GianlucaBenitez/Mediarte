@@ -213,10 +213,9 @@ const usuariosController = {
       const usuarioToken = usuario.toJSON();
       delete usuarioToken.contrasena;
 
-      const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {});
+      const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "24h"});
 
       res.cookie("token",token,{
-        expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
         httpOnly: true,
         secure: true,
         sameSite: "none",
