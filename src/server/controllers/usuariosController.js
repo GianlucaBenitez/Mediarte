@@ -218,7 +218,6 @@ const usuariosController = {
       res.cookie("token",token,{
         secure: true,
         sameSite: "none",
-        domain: '.vercel.app',
       })
 
       return res.status(200).json({message: "Login exitoso", data: {usuarioToken, token}})
