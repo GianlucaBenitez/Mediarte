@@ -1,0 +1,44 @@
+.card {
+    border: 1px solid #726f6f;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .mp3-audio {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .btn-save {
+    background-color: rgb(65, 109, 147);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    float: left;
+    transition: 0.3s background-color;
+  }
+  
+  .btn-save:hover {
+    background-color: #133150;
+  }
+  

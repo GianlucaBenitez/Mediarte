@@ -1,0 +1,39 @@
+@import 'buttons';
+
+.navbar{
+    background-color: rgba(17, 43, 79, 0.15);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    margin: 20px ;
+    border-radius: 16px;
+    padding:0.5rem;
+}
+
+  @media (max-width: 3000px) and (min-width: 1200px){
+    .navbar{
+    width: 800px;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    }
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-family: "Satisfy", cursive;
+    color: rgb(96, 172, 234);
+    font-size: 2em;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+}
+
+.navbar-brand:hover {
+    color: rgb(31, 90, 137);
+}
+
+@media(max-width: 991px) {
+    .sidebar {
+        background-color: rgb(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+    }
+}

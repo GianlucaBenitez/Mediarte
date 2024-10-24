@@ -1,0 +1,30 @@
+@import 'navbar';
+
+.login-button, .registro-button{
+    background-color: rgb(200, 215, 228);
+    color: black;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover, .registro-button:hover{
+    background-color: rgb(37, 56, 72);
+    color: white; 
+}
+
+/*-----------Login-Registro Button------------*/
+.btn {
+    background-color: rgb(200, 215, 228);
+    color: black;
+}
+
+.btn:hover {
+    background-color: rgb(37, 56, 72);
+    color: white;
+}
+
+
+
