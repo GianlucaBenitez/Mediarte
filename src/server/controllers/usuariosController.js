@@ -216,7 +216,7 @@ const usuariosController = {
       const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "24h"});
 
       res.cookie("token",token,{
-        // secure: true,
+        secure: true,
         sameSite: "lax",
       })
 
