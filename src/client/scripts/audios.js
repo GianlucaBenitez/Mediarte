@@ -60,7 +60,7 @@
                 const idAudio = this.getAttribute('data-id');
                 const userId = await obtenerId(); 
                 console.log(userId);  
-                guardarAudio(idAudio);
+                guardarAudio(idAudio, userId);
                 console.log('Botón guardado clickeado, ID:', idAudio);
             });
         });

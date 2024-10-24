@@ -3,6 +3,28 @@ const userId = localStorage.getItem("token");
 // URL base de la API
 const app = "https://mediarte-api.vercel.app";
 
+const obtenerId = async () => {
+  try {
+    const response = await fetch(`${app}/usuarios/obtenerDatos`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+        "Access-Control-Allow-Credentials": true,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener los datos de usuarios");
+    }
+
+    const data = await response.json();
+    return(data.data.id_usuario);
+  } catch (error) {
+    console.error("Error al obtener los audios guardados:", error);
+  }
+};
+
 // Función para obtener todos los audios guardados por el usuario
 const obtenerAudiosGuardados = async () => {
   try {
@@ -27,7 +49,7 @@ const obtenerAudiosGuardados = async () => {
 };
 
 // Función para guardar un audio en el usuario
-const guardarAudio = async (idAudio) => {
+const guardarAudio = async (idAudio, userId) => {
   try {
     const response = await fetch(`${app}/guardados/${userId}`, {
       method: "POST",
