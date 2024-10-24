@@ -33,7 +33,7 @@ const guardarAudio = async (idAudio) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+        "Access-Control-Allow-Origin": "https://mediarte-api.vercel.app",
         "Access-Control-Allow-Credentials": true,
 
       },

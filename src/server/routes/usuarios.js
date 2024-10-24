@@ -15,6 +15,7 @@ router.post("/validar", usuariosController.validar);
 router.post("/logout", verificarToken, usuariosController.logout);
 router.put("/:id", verificarToken, usuariosController.actualizar);
 router.delete("/:id",verificarToken, usuariosController.borrar);
+router.get("/obtenerDatos", verificarToken, usuariosController.obtenerDatos);
 router.get("/:id", verificarToken, usuariosController.obtener);
 
 export default router

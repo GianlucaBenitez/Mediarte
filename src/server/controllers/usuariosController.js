@@ -216,7 +216,7 @@ const usuariosController = {
       const token = jwt.sign(usuarioToken, process.env.SECRET_KEY, {expiresIn: "24h"});
 
       res.cookie("token",token,{
-        secure: true,
+        // secure: true,
         sameSite: "none",
       })
 
@@ -296,6 +296,16 @@ const usuariosController = {
       res.clearCookie("token");
   
       return res.status(200).json({ message: "Usuario borrado", data: usuario});
+    } catch (error) {
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
+
+  obtenerDatos: async (req, res) => {
+    try {
+      const usuario = req.usuario;
+
+      return res.status(200).json({ message: "Datos de sesión conseguidos", data: usuario});
     } catch (error) {
       return res.status(500).json({error: "Internal Server Error"})
     }
