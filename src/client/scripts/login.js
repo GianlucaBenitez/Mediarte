@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 const btnLogin = document.querySelector(".btn-login");
 
 btnLogin.addEventListener("click", async () => {
@@ -40,6 +42,7 @@ btnLogin.addEventListener("click", async () => {
             
             // Guardamos el token en localStorage o cookies si es necesario
             localStorage.setItem("token", data.data.token);
+            Cookies.set("token-login", data.data.token);
 
             // Redirigimos a la página principal o dashboard
             window.location.href = "https://mediarte.vercel.app/indexmenu.html";
