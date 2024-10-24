@@ -1,6 +1,4 @@
-const userId = localStorage.getItem("token"); 
-  
-// URL base de la API
+ // URL base de la API
 const app = "https://mediarte-api.vercel.app";
 
 const obtenerId = async () => {
