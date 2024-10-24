@@ -1,4 +1,28 @@
-const userId = localStorage.getItem("token"); 
+const obtenerId = async () => {
+  try {
+    const response = await fetch(`${app}/usuarios/obtenerDatos`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:5501",
+        "Access-Control-Allow-Credentials": true,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener los datos de usuario");
+    }
+
+    const data = await response.json();
+    return data.data; 
+  } catch (error) {
+    console.error("Error al obtener los datos de usuario:", error);
+  }
+};
+
+
+const token = Cookies.get("token"); 
+console.log(token);
   
 // URL base de la API
 const app = "http://localhost:3000";
@@ -78,17 +102,6 @@ const mostrarAudios = (audios) => {
 }
 
 
-if(window.location.pathname == "/guardados.html"){
+if(window.location.pathname == "/src/client/guardados.html"){
   mostrarAudios(audios);
-  }
-
-if(window.location.pathname == "/audio.html"){
-document.querySelectorAll(".btn-save").forEach((button) => {
-  button.addEventListener("click", () => {
-    const idAudio = button.getAttribute("data-id"); 
-    guardarAudio(idAudio);
-  });
-});
 }
-
-  
