@@ -1,7 +1,7 @@
 const userId = localStorage.getItem("token"); 
   
 // URL base de la API
-const app = "http://localhost:3000";
+const app = "https://mediarte-api.vercel.app";
 
 // Función para obtener todos los audios guardados por el usuario
 const obtenerAudiosGuardados = async () => {
@@ -10,7 +10,7 @@ const obtenerAudiosGuardados = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:5501",
+        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
       },
     });
@@ -33,7 +33,7 @@ const guardarAudio = async (idAudio) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:5501",
+        "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
 
       },
