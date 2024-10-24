@@ -1,5 +1,3 @@
-import Cookies from "js-cookie";
-
 const btnLogin = document.querySelector(".btn-login");
 
 btnLogin.addEventListener("click", async () => {
