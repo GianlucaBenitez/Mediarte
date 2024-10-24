@@ -1,9 +1,10 @@
     const container = document.querySelector("#audiosContainer"); 
     console.log(container);
-    const cards = document.querySelectorAll('.meditation-card');
+    const cards = document.querySelectorAll('.meditation-card:not(.Guardados)');
     console.log(cards);
 
-    const guardadosCard = document.querySelectorAll('.guardados');
+    const guardadosCard = document.querySelectorAll('.Guardados');
+    console.log(guardadosCard);
 
     const obtenerAudios = async (tipo) => {
         try {
@@ -47,7 +48,7 @@
                     <div class="card-body">
                         <h4 class="card-title">${audio.nombre_audio}</h4>
                         <p class="card-text">${audio.tipo_meditacion}</p>
-                        <!--<button class="btn-save" data-id="${audio.id_audio}">✦</button>-->
+                        <button class="btn-save" data-id="${audio.id_audio}">✦</button
                         <audio controls class="mp3-audio">
                             <source src="${audio.url_audio}" type="audio/mp3">
                             Tu navegador no soporta audios.
@@ -76,6 +77,6 @@
 
     if(guardadosCard){
         guardadosCard.forEach(guardado => guardado.addEventListener('click', async function(e) {
-            window.location.href = "guardados.html";
+            window.location.href = "./guardados.html";
         }))
     }
