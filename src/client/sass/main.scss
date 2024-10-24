@@ -1,0 +1,15 @@
+/*Base*/
+@import './base/reset';
+@import './base/tipografia';
+
+/*Componentes*/
+@import './components/buttons';
+@import './components/cards';
+@import './components/navbar';
+
+/*Layouts (Vistas)*/
+@import './layouts/audio';
+@import './layouts/home';
+@import './layouts/login';
+@import './layouts/menu';
+@import './layouts/registrarse';

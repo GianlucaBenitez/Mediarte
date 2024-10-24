@@ -1,0 +1,302 @@
+body {
+    background: url('/src/client/styles/media/fondoOficial.png') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+.navbar{
+    background-color: rgba(17, 43, 79, 0.15);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    margin: 20px ;
+    border-radius: 16px;
+    padding:0.5rem;
+}
+
+  @media (max-width: 3000px) and (min-width: 1200px){
+    .navbar{
+    width: 800px;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    }
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-family: "Satisfy", cursive;
+    color: rgb(96, 172, 234);
+    font-size: 2em;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+}
+
+.navbar-brand:hover {
+    color: rgb(31, 90, 137);
+}
+
+@media(max-width: 991px) {
+    .sidebar {
+        background-color: rgb(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+    }
+}
+
+.login-button, .registro-button{
+    background-color: rgb(200, 215, 228);
+    color: black;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover, .registro-button:hover{
+    background-color: rgb(37, 56, 72);
+    color: white; 
+}
+
+/*-----------Login-Registro Button------------*/
+.btn {
+    background-color: rgb(200, 215, 228);
+    color: black;
+}
+
+.btn:hover {
+    background-color: rgb(37, 56, 72);
+    color: white;
+}
+
+.card {
+    margin-top: 5%;
+    width: 800px;
+    background-color: rgba(17, 43, 79, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 0.5rem;
+    border: none;
+  }
+  
+  @media (max-width: 600px) and (min-width: 100px) {
+    .card {
+      margin-top: 1%;
+      width: 300px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .card-title {
+    font-family: 'Satisfy', cursive;
+    color: rgb(96, 172, 234);
+    font-size: 2em;
+  }
+  
+  .card-text {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 3px #0f3353, 0 0 5px #162536;
+  }
+
+.card {
+    border: 1px solid #726f6f;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .mp3-audio {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .btn-save {
+    background-color: rgb(65, 109, 147);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    float: left;
+    transition: 0.3s background-color;
+  }
+  
+  .btn-save:hover {
+    background-color: #133150;
+  }
+
+  .box-area {
+    width: 930px;
+  }
+  
+  .right-box {
+    padding: 40px 30px 40px 40px;
+  }
+  
+  ::placeholder {
+    font-size: 16px;
+  }
+  
+  .rounded-4 {
+    border-radius: 20px;
+  }
+  
+  .rounded-5 {
+    border-radius: 30px;
+  }
+  
+  .btn {
+    background-color: rgb(200, 215, 228);
+    color: black;
+  }
+  
+  .btn:hover {
+    background-color: rgb(37, 56, 72);
+    color: white;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .box-area {
+      margin: 0 10px;
+    }
+  
+    .left-box {
+      height: 330px;
+      overflow: hidden;
+    }
+  
+    .right-box {
+      padding: 20px;
+    }
+  }
+  
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .featured-image {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .box-area {
+    width: 930px;
+  }
+  
+  .right-box {
+    padding: 40px 30px 40px 40px;
+  }
+  
+  ::placeholder {
+    font-size: 16px;
+  }
+  
+  .rounded-4 {
+    border-radius: 20px;
+  }
+  
+  .rounded-5 {
+    border-radius: 30px;
+  }
+  
+  .btn {
+    background-color: rgb(200, 215, 228);
+    color: black;
+  }
+  
+  .btn:hover {
+    background-color: rgb(37, 56, 72);
+    color: white;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .box-area {
+      margin: 0 10px;
+    }
+  
+    .left-box {
+      height: 330px;
+      overflow: hidden;
+    }
+  
+    .right-box {
+      padding: 20px;
+    }
+  }
+  
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .featured-image {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .meditation-card {
+    width: 250px;
+    height: 350px;
+    background-color: rgba(67, 105, 228, 0.616);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .meditation-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(39, 52, 89, 0.622);
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+  }
+  
+  .meditation-card h5 {
+    font-family: 'Marcellus', serif;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    margin-top: 30px;
+    margin-bottom: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+/*# sourceMappingURL=main.css.map */
