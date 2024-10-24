@@ -7,11 +7,11 @@
     const obtenerAudios = async (tipo) => {
         try {
             console.log(tipo);  
-            const response = await fetch(`http://127.0.0.1:3000/audios/${tipo}`, { 
+            const response = await fetch(`https://mediarte-api.vercel.app/audios/${tipo}`, { 
                 method: "GET",
                 headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "http://127.0.0.1:5501",
+                "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
                 "Access-Control-Allow-Credentials": true,
                 },
             }); 
@@ -74,7 +74,7 @@
     }
     console.log(window.location.pathname)
 
-    if(window.location.pathname == "/src/client/audio.html"){
+    if(window.location.pathname == "/audio.html"){
         const params = new URLSearchParams(window.location.search); 
         const tipo = params.get("tipo");
         obtenerAudios(tipo);
