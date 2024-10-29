@@ -57,9 +57,9 @@
             container.appendChild(card);
 
             card.querySelector('.btn-save').addEventListener('click', async function() {
-                const idAudio = this.getAttribute('data-id');
+                const idAudio = Number(this.getAttribute('data-id'));
                 const userId = await obtenerId(); 
-                Number(idAudio);
+
                 console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
                 console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);  
                 guardarAudio(idAudio, userId);
