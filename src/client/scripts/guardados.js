@@ -105,6 +105,15 @@ const mostrarAudios = (audios) => {
 
 
 if(window.location.pathname == "/guardados.html"){
-  const userId = await obtenerId();
+  const userId = obtenerId();
   await obtenerAudiosGuardados(userId);
+}
+
+if(window.location.pathname == "/audio.html"){
+document.querySelectorAll(".btn-save").forEach((button) => {
+  button.addEventListener("click", () => {
+    const idAudio = button.getAttribute("data-id"); 
+    guardarAudio(idAudio);
+  });
+});
 }
