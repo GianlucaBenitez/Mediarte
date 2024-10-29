@@ -99,6 +99,8 @@ const borrarAudio = async (idAudio, userId) => {
     } else {
       console.log("Audio borrado exitosamente.");
     }
+
+    return response;
   } catch (error) {
     console.error("Error al guardar el audio:", error);
   }
@@ -133,8 +135,12 @@ const mostrarAudios = (audios) => {
       const userId = await obtenerId(); 
 
       console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
-      console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);  
-      borrarAudio(idAudio, userId);
+      console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);
+        
+      const response = await borrarAudio(idAudio, userId);
+      if (response.ok){
+        await obtenerAudiosGuardados(userId);
+      }
   });
   });
 }
