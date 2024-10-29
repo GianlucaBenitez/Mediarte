@@ -106,7 +106,7 @@ const mostrarAudios = (audios) => {
 
 
 if(window.location.pathname == "/guardados.html"){
-  const userId = obtenerAudios();
+  const userId = obtenerId();
   obtenerAudiosGuardados(userId)
   // mostrarAudios(audios);
 }
