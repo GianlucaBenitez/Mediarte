@@ -72,7 +72,6 @@ const guardarAudio = async (idAudio, userId) => {
       console.error("Error al guardar el audio:", errorData.error);
     } else {
       console.log("Audio guardado exitosamente.");
-      obtenerAudiosGuardados(); // Actualiza la lista de audios guardados
     }
   } catch (error) {
     console.error("Error al guardar el audio:", error);
@@ -106,16 +105,6 @@ const mostrarAudios = (audios) => {
 
 
 if(window.location.pathname == "/guardados.html"){
-  mostrarAudios(audios);
-  }
-
-if(window.location.pathname == "/audio.html"){
-document.querySelectorAll(".btn-save").forEach((button) => {
-  button.addEventListener("click", () => {
-    const idAudio = button.getAttribute("data-id"); 
-    guardarAudio(idAudio);
-  });
-});
+  const userId = await obtenerId();
+  await obtenerAudiosGuardados(userId);
 }
-
-  
