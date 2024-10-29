@@ -15,11 +15,13 @@ const obtenerId = async () => {
       credentials: "include"
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
+      alert(data.error || "Error en la cookie");
       throw new Error("Error al obtener los datos de usuarios");
     }
 
-    const data = await response.json();
     return(data.data.id_usuario);
   } catch (error) {
     console.error("Error al obtener los audios guardados:", error);
