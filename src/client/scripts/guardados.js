@@ -104,14 +104,14 @@ const mostrarAudios = (audios) => {
   });
 }
 
+const cargarDatos = async () => {
+  const userId = await obtenerId();
+  console.log(userId);
+  await obtenerAudiosGuardados(userId)
+}
 
 if(window.location.pathname == "/guardados.html"){
-  const cargarDatos = async () => {
-    const userId = await obtenerId();
-    console.log(userId);
-    obtenerAudiosGuardados(userId)
-  }
-  // mostrarAudios(audios);
+  cargarDatos();
 }
 
 if(window.location.pathname == "/audio.html"){
