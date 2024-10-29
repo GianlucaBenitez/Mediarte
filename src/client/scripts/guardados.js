@@ -28,7 +28,7 @@ const obtenerId = async () => {
 };
 
 // Función para obtener todos los audios guardados por el usuario
-const obtenerAudiosGuardados = async () => {
+const obtenerAudiosGuardados = async (userId) => {
   try {
     const response = await fetch(`${app}/guardados/${userId}`, {
       method: "GET",
@@ -106,7 +106,7 @@ const mostrarAudios = (audios) => {
 
 
 if(window.location.pathname == "/guardados.html"){
-  const userId = await obtenerId();
+  const userId = obtenerId();
   console.log(userId);
   obtenerAudiosGuardados(userId)
   // mostrarAudios(audios);
