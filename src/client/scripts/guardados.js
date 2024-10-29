@@ -1,6 +1,6 @@
  // URL base de la API
 const app = "https://mediarte-api.vercel.app";
-const cookie = Cookies.get();
+const cookie = Cookies.get("token-login");
 
 const obtenerId = async () => {
   try {
