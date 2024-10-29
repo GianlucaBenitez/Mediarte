@@ -1,5 +1,6 @@
  // URL base de la API
 const app = "https://mediarte-api.vercel.app";
+const cookie = Cookies.get();
 
 const obtenerId = async () => {
   try {
@@ -9,6 +10,7 @@ const obtenerId = async () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
+        "Authorization": `Bearer ${cookie.token_login}`
       },
     });
 
