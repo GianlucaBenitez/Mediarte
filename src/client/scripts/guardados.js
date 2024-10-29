@@ -10,7 +10,7 @@ const obtenerId = async () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
-        "Authorization": `Bearer ${cookie.token_login}`
+        "Authorization": `Bearer ${cookie}`
       },
       credentials: "include"
     });
