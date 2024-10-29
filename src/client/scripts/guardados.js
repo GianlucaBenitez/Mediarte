@@ -72,6 +72,7 @@ const guardarAudio = async (idAudio, userId) => {
       console.error("Error al guardar el audio:", errorData.error);
     } else {
       console.log("Audio guardado exitosamente.");
+      obtenerAudiosGuardados(); // Actualiza la lista de audios guardados
     }
   } catch (error) {
     console.error("Error al guardar el audio:", error);
@@ -105,8 +106,7 @@ const mostrarAudios = (audios) => {
 
 
 if(window.location.pathname == "/guardados.html"){
-  const userId = obtenerId();
-  await obtenerAudiosGuardados(userId);
+  mostrarAudios(audios);
 }
 
 if(window.location.pathname == "/audio.html"){
