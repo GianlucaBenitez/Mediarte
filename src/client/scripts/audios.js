@@ -49,7 +49,7 @@
                         <audio controls class="mp3-audio">
                             <source src="${audio.url_audio}" type="audio/mp3">
                         </audio>
-                        button class="btn-save" data-id="${audio.id_audio}">✦</button>
+                        <button class="btn-save" data-id="${audio.id_audio}">✦</button>
                     </div>
                 </div>
             `;
