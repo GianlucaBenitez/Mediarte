@@ -18,7 +18,6 @@ const obtenerId = async () => {
     const data = await response.json();
 
     if (!response.ok) {
-      alert(data.error || "Error en la cookie");
       throw new Error("Error al obtener los datos de usuarios");
     }
 
@@ -37,7 +36,9 @@ const obtenerAudiosGuardados = async () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
+        "Authorization": `Bearer ${cookie}`
       },
+      credentials: "include"
     });
 
     if (!response.ok) {
@@ -60,8 +61,9 @@ const guardarAudio = async (idAudio, userId) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte-api.vercel.app",
         "Access-Control-Allow-Credentials": true,
-
+        "Authorization": `Bearer ${cookie}`
       },
+      credentials: "include",
       body: JSON.stringify({ id_audio: idAudio }),
     });
 
