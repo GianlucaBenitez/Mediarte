@@ -16,6 +16,7 @@ const verificarToken = (req, res, next) => {
 
     next();
   } catch (error) {
+    console.error("Token verification error:", error);
     return res.status(403).json({ error: "Token no válido o expirado." });
   }
 };
