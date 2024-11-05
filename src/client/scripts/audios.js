@@ -49,20 +49,21 @@
                         <audio controls class="mp3-audio">
                             <source src="${audio.url_audio}" type="audio/mp3">
                         </audio>
-                        <!--<button class="btn-save" data-id="${audio.id_audio}">✦</button>-->
+                        <button class="btn-save" data-id="${audio.id_audio}">✦</button>
                     </div>
                 </div>
             `;
             
             container.appendChild(card);
 
-            /*card.querySelector('.btn-save').addEventListener('click', async function() {
-                const idAudio = this.getAttribute('data-id');
+            card.querySelector('.btn-save').addEventListener('click', async function() {
+                const idAudio = Number(this.getAttribute('data-id'));
                 const userId = await obtenerId(); 
-                console.log(userId);  
+
+                console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
+                console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);  
                 guardarAudio(idAudio, userId);
-                console.log('Botón guardado clickeado, ID:', idAudio);
-            });*/
+            });
         });
     };
 

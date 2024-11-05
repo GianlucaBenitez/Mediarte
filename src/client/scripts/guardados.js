@@ -1,5 +1,6 @@
  // URL base de la API
 const app = "https://mediarte-api.vercel.app";
+const cookie = Cookies.get("token-login");
 
 const obtenerId = async () => {
   try {
@@ -9,14 +10,17 @@ const obtenerId = async () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
+        "Authorization": `Bearer ${cookie}`
       },
+      credentials: "include"
     });
+
+    const data = await response.json();
 
     if (!response.ok) {
       throw new Error("Error al obtener los datos de usuarios");
     }
 
-    const data = await response.json();
     return(data.data.id_usuario);
   } catch (error) {
     console.error("Error al obtener los audios guardados:", error);
@@ -24,7 +28,7 @@ const obtenerId = async () => {
 };
 
 // Función para obtener todos los audios guardados por el usuario
-const obtenerAudiosGuardados = async () => {
+const obtenerAudiosGuardados = async (userId) => {
   try {
     const response = await fetch(`${app}/guardados/${userId}`, {
       method: "GET",
@@ -32,7 +36,9 @@ const obtenerAudiosGuardados = async () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
         "Access-Control-Allow-Credentials": true,
+        "Authorization": `Bearer ${cookie}`
       },
+      credentials: "include"
     });
 
     if (!response.ok) {
@@ -55,8 +61,9 @@ const guardarAudio = async (idAudio, userId) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://mediarte-api.vercel.app",
         "Access-Control-Allow-Credentials": true,
-
+        "Authorization": `Bearer ${cookie}`
       },
+      credentials: "include",
       body: JSON.stringify({ id_audio: idAudio }),
     });
 
@@ -65,8 +72,35 @@ const guardarAudio = async (idAudio, userId) => {
       console.error("Error al guardar el audio:", errorData.error);
     } else {
       console.log("Audio guardado exitosamente.");
-      obtenerAudiosGuardados(); // Actualiza la lista de audios guardados
+      // obtenerAudiosGuardados(); // Actualiza la lista de audios guardados
     }
+  } catch (error) {
+    console.error("Error al guardar el audio:", error);
+  }
+};
+
+const borrarAudio = async (idAudio, userId) => {
+  try {
+    const response = await fetch(`${app}/guardados/${userId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://mediarte-api.vercel.app",
+        "Access-Control-Allow-Credentials": true,
+        "Authorization": `Bearer ${cookie}`
+      },
+      credentials: "include",
+      body: JSON.stringify({ id_audio: idAudio }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error al borrar el audio:", errorData.error);
+    } else {
+      console.log("Audio borrado exitosamente.");
+    }
+
+    return response;
   } catch (error) {
     console.error("Error al guardar el audio:", error);
   }
@@ -81,26 +115,45 @@ const mostrarAudios = (audios) => {
     const card = document.createElement("div");
     card.classList.add("col-md-4", "mb-4");
     card.innerHTML = `
-      <div class="card">
-        <audio controls>
-          <source src="${audio.url_audio}" type="audio/mpeg">
-          Tu navegador no soporta el elemento de audio.
-        </audio>
-        <div class="card-body">
-          <h5 class="card-title">${audio.nombre_audio}</h5>
-          <p class="card-text">Tipo: ${audio.tipo_meditacion}</p>
+    <div class="card">
+      <img class="card-img-top mp3-cover" src="https://res.cloudinary.com/de2ggefyf/image/upload/imagenes/${audio.tipo_meditacion}.jpg" alt="${audio.nombre_audio}">
+      <div class="card-body">
+          <h4 class="card-title">${audio.nombre_audio}</h4>
+          <p class="card-text">${audio.tipo_meditacion}</p>
+          <audio controls class="mp3-audio">
+              <source src="${audio.url_audio}" type="audio/mp3">
+          </audio>
           <button class="btn-delete" data-id="${audio.id_audio}">Borrar</button>
-        </div>
       </div>
+    </div>
     `;
+
     container.appendChild(card);
+
+    card.querySelector('.btn-delete').addEventListener('click', async function() {
+      const idAudio = Number(this.getAttribute('data-id'));
+      const userId = await obtenerId(); 
+
+      console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
+      console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);
+        
+      const response = await borrarAudio(idAudio, userId);
+      if (response.ok){
+        await obtenerAudiosGuardados(userId);
+      }
+  });
   });
 }
 
+const cargarDatos = async () => {
+  const userId = await obtenerId();
+  console.log(userId);
+  await obtenerAudiosGuardados(userId)
+}
 
 if(window.location.pathname == "/guardados.html"){
-  mostrarAudios(audios);
-  }
+  cargarDatos();
+}
 
 if(window.location.pathname == "/audio.html"){
 document.querySelectorAll(".btn-save").forEach((button) => {
@@ -110,5 +163,3 @@ document.querySelectorAll(".btn-save").forEach((button) => {
   });
 });
 }
-
-  

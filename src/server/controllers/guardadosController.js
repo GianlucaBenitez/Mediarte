@@ -13,8 +13,15 @@ const guardadosController = {
       if (guardados.length === 0) {
         return res.status(404).json({ error: "Este usuario no tiene guardados" });
       }
+
+      const audios = await Promise.all(
+        guardados.map(async (guardado) => {
+          const id_audio = guardado.id_audio;
+          return await Audio.findByPk(id_audio);
+        })
+      );
         
-      return res.status(200).json({message: "Guardados obtenidos", data:guardados}) 
+      return res.status(200).json({message: "Guardados obtenidos", data:audios}) 
     } catch (error) {
       console.log(error)
       return res.status(500).json({error: "Internal Server Error"})

@@ -39,7 +39,6 @@ btnLogin.addEventListener("click", async () => {
             console.log("Usuario logueado:", data.data.usuarioToken);
             
             // Guardamos el token en localStorage o cookies si es necesario
-            localStorage.setItem("token", data.data.token);
             Cookies.set("token-login", data.data.token);
 
             // Redirigimos a la página principal o dashboard
