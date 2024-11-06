@@ -6,13 +6,13 @@ const escritorio = document.querySelector(".escritorio-buttons");
 if(cookieExiste){
     celular.innerHTML = `
         <a class="btn registro-button mb-2" href="indexmenu.html">Meditaciones</a>
-        <a class="btn registro-button" href="perfil.html">Perfil</a>
+        <a class="btn registro-button mb-2" href="perfil2.html">Perfil</a>
         <a class="btn registro-button" href="guardados.html">Favoritos</a>
     `
 
     escritorio.innerHTML = `
         <a class="btn registro-button me-2" href="indexmenu.html">Meditaciones</a>
-        <a class="btn registro-button" href="perfil.html">Perfil</a>
+        <a class="btn registro-button me-2" href="perfil2.html">Perfil</a>
         <a class="btn registro-button" href="guardados.html">Favoritos</a>
     `
 }
