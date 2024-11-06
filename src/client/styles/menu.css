@@ -124,19 +124,19 @@ body{
     margin-top: 10px;
 }
 
-.card{
+.card-usuario{
     width: 800px;
     border-radius: 16px;
 }
 
 @media (max-width: 600px) and (min-width: 100px){
-    .card{
+    .card-usuario{
         width: 300px;
     }
 
 } 
 
-.card-title{
+.card-title-usuario{
     font-family: "Satisfy", cursive;
     color: rgb(96, 172, 234);
     font-size: 2em;
