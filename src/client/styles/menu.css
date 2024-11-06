@@ -51,6 +51,7 @@ body{
     border-radius: 50px;
     text-decoration: none;
     transition: 0.3s background-color;
+    border: none;
 }
 
 .login-button:hover, .registro-button:hover{
@@ -122,3 +123,22 @@ body{
 .Guardados h5{
     margin-top: 10px;
 }
+
+.card{
+    width: 800px;
+    border-radius: 16px;
+}
+
+@media (max-width: 600px) and (min-width: 100px){
+    .card{
+        width: 300px;
+    }
+
+} 
+
+.card-title{
+    font-family: "Satisfy", cursive;
+    color: rgb(96, 172, 234);
+    font-size: 2em;
+}
+

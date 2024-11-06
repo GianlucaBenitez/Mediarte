@@ -123,7 +123,7 @@ const mostrarAudios = (audios) => {
           <audio controls class="mp3-audio">
               <source src="${audio.url_audio}" type="audio/mp3">
           </audio>
-          <button class="btn-delete" data-id="${audio.id_audio}">Borrar</button>
+          <button class="login-button btn-delete" data-id="${audio.id_audio}">Borrar</button>
       </div>
     </div>
     `;
