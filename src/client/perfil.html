@@ -35,30 +35,33 @@
         <div class="offcanvas-body d-flex flex-column align-items-center">
           <!-- Botones para Celular -->
           <div class="celular-buttons mt-auto d-lg-none d-flex flex-column position-absolute top-50 align-items-center">
-            <a class="btn registro-button" href="indexmenu.html">Menu</a>
+            <a class="btn registro-button" href="index.html">Inicio</a>
           </div>
         </div>        
       </div>
       <!-- Botones para Escritorio -->
-      <div class="d-none d-lg-flex">
-        <a class="btn login-button me-2" href="index.html">Menu</a>
+      <div class="d-none d-lg-flex escritorio-buttons">
+        <a class="btn me-2" href="index.html">inicio</a>
       </div>
     </div>
   </nav>
+  
   <div class="container" id="main-container">
     <div class="row justify-content-center">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Bienvenido "Nombre usuario" ⋆౨ৎ˚⟡</h5>
-          <p class="card-text">Email</p>
-          <p class="card-text">Contraseña</p>
-          <button class="login-button">Cerrar Sesion</button>
+          <h5 class="card-title nombre">Bienvenido ⋆౨ৎ˚⟡</h5>
+          <p class="card-text email">Email</p>
+          <button class="login-button">Cerrar Sesión</button>
       </div>
     </div>
   </div>
 
   <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
   <script src="scripts/home.js"></script>
+  <script src="scripts/validarCookies.js"></script>
+  <script src="scripts/perfil.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

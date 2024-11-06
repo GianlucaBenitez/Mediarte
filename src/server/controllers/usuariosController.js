@@ -230,7 +230,7 @@ const usuariosController = {
 
   logout: async (req, res) => {
     try {
-      res.clearCookie("token");
+      res.clearCookie("token-login");
 
       return res.status(200).json({ message: "Usuario deslogueado exitosamente"});
     } catch (error) {

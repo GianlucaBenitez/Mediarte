@@ -13,19 +13,33 @@
 <body>
   <div id="backgroundImage" class="background-image"></div>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-    <div class="container-fluid justify-content-start"> 
-      <a class="navbar-brand" href="index.html">
-        <img src="styles/logo_mediarte.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
-        Mediarte
-      </a>
-    </div>
-    <div class="auth-buttons d-none d-lg-flex position-absolute top-0 end-0 me-4 mt-3">
-      <a class="btn inicio-button" href="index.html">Inicio</a>
-      <a class="btn registro-button" href="perfil.html">Perfil</a>
-    </div>
-  </nav>
+    <!-- Navbar y contenido principal -->
+    <nav class="navbar navbar-expand-lg" id="main-content">
+      <div class="container-fluid">
+        <a class="navbar-brand me-auto" href="index.html">
+          <img src="styles/logo_mediarte.png" alt="Logo" width="50" height="50" class="d-inline-block">
+          Mediarte</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mediarte</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body d-flex flex-column align-items-center">
+            <!-- Botones para Celular -->
+            <div class="celular-buttons mt-auto d-lg-none d-flex flex-column position-absolute top-50 align-items-center">
+              <a class="btn registro-button" href="indexmenu.html">Menu</a>
+            </div>
+          </div>        
+        </div>
+        <!-- Botones para Escritorio -->
+        <div class="d-none d-lg-flex escritorio-buttons">
+          <a class="btn me-2" href="indexmenu.html">Menu</a>
+        </div>
+      </div>
+    </nav>
 
     <!-----------------------Cards De Audio------------------------>
   <h1>GUARDADOS</h1>
@@ -36,6 +50,7 @@
   </div>  
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="scripts/validarCookies.js"></script>
   <script src="scripts/guardados.js"></script>
 </body>
 </html>
