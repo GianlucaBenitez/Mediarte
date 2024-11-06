@@ -61,6 +61,7 @@ const cerrarSesion = async () => {
         throw new Error("Error al cerrar sesión");
       }
       
+      Cookies.remove("token-login");
       window.location.href = "https://mediarte.vercel.app/index.html";
     } catch (error) {
       console.error("Error al obtener los audios guardados:", error);
