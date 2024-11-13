@@ -124,7 +124,7 @@ body{
     margin-top: 10px;
 }
 
-.card-usuario{
+.card{
     width: 800px;
     border-radius: 16px;
 }
@@ -136,7 +136,7 @@ body{
 
 } 
 
-.card-title-usuario{
+.card-title{
     font-family: "Satisfy", cursive;
     color: rgb(96, 172, 234);
     font-size: 2em;
