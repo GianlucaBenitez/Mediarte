@@ -36,10 +36,6 @@ const guardadosController = {
         attributes: ['id_audio']
       });
 
-      if (guardados.length === 0) {
-        return res.status(404).json({ error: "Este usuario no tiene guardados" });
-      }
-
       const idAudios = guardados.map(guardado => guardado.id_audio);
         
       return res.status(200).json({message: "Guardados obtenidos", data: idAudios}) 
