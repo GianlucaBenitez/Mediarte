@@ -154,12 +154,3 @@ const cargarDatos = async () => {
 if(window.location.pathname == "/guardados.html"){
   cargarDatos();
 }
-
-if(window.location.pathname == "/audio.html"){
-document.querySelectorAll(".btn-save").forEach((button) => {
-  button.addEventListener("click", () => {
-    const idAudio = button.getAttribute("data-id"); 
-    guardarAudio(idAudio);
-  });
-});
-}

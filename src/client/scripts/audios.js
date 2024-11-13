@@ -1,8 +1,35 @@
+    const cookieAudios = Cookies.get("token-login");
+
     const container = document.querySelector("#audiosContainer"); 
     console.log(container);
 
     const cards = document.querySelectorAll('.meditation-card:not(.Guardados)');
     const guardadosCard = document.querySelectorAll('.Guardados');
+
+    const obtenerUserId = async () => {
+        try {
+          const response = await fetch(`https://mediarte-api.vercel.app/usuarios/obtenerDatos`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+              "Access-Control-Allow-Credentials": true,
+              "Authorization": `Bearer ${cookieAudios}`
+            },
+            credentials: "include"
+          });
+      
+          const data = await response.json();
+      
+          if (!response.ok) {
+            throw new Error("Error al obtener los datos de usuarios");
+          }
+      
+          return(data.data.id_usuario);
+        } catch (error) {
+          console.error("Error al obtener los audios guardados:", error);
+        }
+      };
 
     const obtenerAudios = async (tipo) => {
         try {
@@ -27,8 +54,39 @@
         }
     };
 
+    const obtenerIdFavoritos = async (userId) => {
+        try {
+          const response = await fetch(`https://mediarte-api.vercel.app/guardados/obtenerIdFavoritos/${userId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "https://mediarte.vercel.app",
+              "Access-Control-Allow-Credentials": true,
+              "Authorization": `Bearer ${cookieAudios}`
+            },
+            credentials: "include"
+          });
+      
+          const data = await response.json();
+      
+          if (!response.ok) {
+            throw new Error("Error al obtener los datos de usuarios");
+          }
+      
+          return(data.data);
+        } catch (error) {
+          console.error("Error al obtener los audios guardados:", error);
+        }
+      };
+
     // Función para mostrar audios
-    const renderizarAudios = (audios, tipo) => {
+    const renderizarAudios = async (audios, tipo) => {
+        const userId = await obtenerUserId();
+        console.log(userId);
+
+        const audiosFavoritos = await obtenerIdFavoritos(userId);
+        console.log(audiosFavoritos);
+
         container.innerHTML = ""; 
 
         if (audios.length === 0) {
@@ -56,13 +114,31 @@
             
             container.appendChild(card);
 
-            card.querySelector('.btn-save').addEventListener('click', async function() {
-                const idAudio = Number(this.getAttribute('data-id'));
-                const userId = await obtenerId(); 
+            if(audiosFavoritos.includes(audio.id_audio)){
+                const botonFavorito = card.querySelector(`button`);
+                botonFavorito.classList.add("favorito");
+                console.log(botonFavorito)
+            }
 
-                console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
-                console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);  
-                guardarAudio(idAudio, userId);
+            let boton = card.querySelector('.btn-save');
+            boton.addEventListener('click', async function() {
+                if(boton.classList.contains("favorito")){
+                    const idAudio = Number(this.getAttribute('data-id'));
+                    const userId = await obtenerId();
+
+                    console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
+                    console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`); 
+                    borrarAudio(idAudio, userId);
+                }else{
+                    const idAudio = Number(this.getAttribute('data-id'));
+                    const userId = await obtenerId(); 
+
+                    console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
+                    console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);  
+                    guardarAudio(idAudio, userId);
+                }
+
+                boton.classList.toggle("favorito")
             });
         });
     };

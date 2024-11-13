@@ -26,7 +26,28 @@ const guardadosController = {
       console.log(error)
       return res.status(500).json({error: "Internal Server Error"})
     }
-  },    
+  },
+
+  obtenerIdFavoritos: async (req, res) => {
+    try {
+      const {id_usuario} = req.params;
+      const guardados = await Guardado.findAll({ 
+        where: {id_usuario}, 
+        attributes: ['id_audio']
+      });
+
+      if (guardados.length === 0) {
+        return res.status(404).json({ error: "Este usuario no tiene guardados" });
+      }
+
+      const idAudios = guardados.map(guardado => guardado.id_audio);
+        
+      return res.status(200).json({message: "Guardados obtenidos", data: idAudios}) 
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({error: "Internal Server Error"})
+    }
+  },
 
   crear: async (req, res) => {
     try {
