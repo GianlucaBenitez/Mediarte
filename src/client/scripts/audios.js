@@ -99,7 +99,7 @@
             card.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
 
             card.innerHTML = `
-                <div class="card-audio">
+                <div class="card">
                     <img class="card-img-top mp3-cover" src="https://res.cloudinary.com/de2ggefyf/image/upload/imagenes/${tipo}.jpg" alt="${audio.nombre_audio}">
                     <div class="card-body">
                         <h4 class="card-title">${audio.nombre_audio}</h4>
