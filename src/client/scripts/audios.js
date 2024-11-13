@@ -116,19 +116,21 @@
 
             if(audiosFavoritos.includes(audio.id_audio)){
                 const botonFavorito = card.querySelector(`button`);
-                botonFavorito.classList.add("favorito");
+                botonFavorito.classList.replace("btn-save","btn-guardado");
                 console.log(botonFavorito)
             }
 
-            let boton = card.querySelector('.btn-save');
+            let boton = card.querySelector('button');
             boton.addEventListener('click', async function() {
-                if(boton.classList.contains("favorito")){
+                if(boton.classList.contains("btn-guardado")){
                     const idAudio = Number(this.getAttribute('data-id'));
                     const userId = await obtenerId();
 
                     console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
                     console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`); 
                     borrarAudio(idAudio, userId);
+
+                    boton.classList.replace("btn-guardado","btn-save");
                 }else{
                     const idAudio = Number(this.getAttribute('data-id'));
                     const userId = await obtenerId(); 
@@ -136,9 +138,9 @@
                     console.log(`ID Usuario: ${userId} Tipo:${typeof(userId)}`);
                     console.log(`ID Audio: ${idAudio} Tipo:${typeof(idAudio)}`);  
                     guardarAudio(idAudio, userId);
-                }
 
-                boton.classList.toggle("favorito")
+                    boton.classList.replace("btn-save","btn-guardado");
+                }
             });
         });
     };
