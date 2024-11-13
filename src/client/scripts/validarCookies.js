@@ -17,7 +17,7 @@ if(cookieExiste){
     `
 }
 
-if(window.location.pathname == "/src/client/perfil.html" && !cookieExiste){
+if(window.location.pathname == "/perfil2.html" && !cookieExiste){
     const body = document.querySelector(".card");
     body.innerHTML = `
         <div class="card-text">Por favor, inicie sesión para acceder a esta página</div>
