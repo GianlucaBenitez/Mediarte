@@ -42,3 +42,18 @@
 .btn-save:hover {
     background-color: #133150;
 }
+
+.btn-guardado{
+    background-color: rgb(214, 238, 120);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    float: left;
+    transition: 0.3s background-color;
+}
+
+.btn-save:hover {
+    background-color:rgb(186, 218, 62);
+}
