@@ -10,6 +10,7 @@ import verificarToken from '../middleware/verificarToken.js';
 
 // rutas
 router.get("/:id_usuario", verificarToken, guardadosController.obtenerTodos);
+router.get("/obtenerIdFavoritos/:id_usuario", verificarToken, guardadosController.obtenerIdFavoritos);
 router.post("/:id_usuario", verificarToken, guardadosController.crear);
 router.delete("/:id_usuario", verificarToken, guardadosController.borrar);
   
