@@ -6,6 +6,10 @@
     const cards = document.querySelectorAll('.meditation-card:not(.Guardados)');
     const guardadosCard = document.querySelectorAll('.Guardados');
 
+    const paramsInfo = new URLSearchParams(window.location.search); 
+    const tipoInfo = paramsInfo.get("tipo"); 
+    const infoCards = document.querySelector(`.info-${tipoInfo}`);
+
     const obtenerUserId = async () => {
         try {
           const response = await fetch(`https://mediarte-api.vercel.app/usuarios/obtenerDatos`, {
@@ -78,6 +82,11 @@
           console.error("Error al obtener los audios guardados:", error);
         }
       };
+
+
+      if(infoCards){
+        infoCards.style.display = 'block';
+      }
 
     // Función para mostrar audios
     const renderizarAudios = async (audios, tipo) => {
