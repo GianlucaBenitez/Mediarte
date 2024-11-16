@@ -74,9 +74,3 @@ body{
     color: rgb(39, 84, 120);
     font-size: 2em; 
 }
-
-@media (max-width: 990px) and (min-width: 300px){
-    .info{
-        width: 600px;
-    }
-}
