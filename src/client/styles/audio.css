@@ -77,6 +77,6 @@ body{
 
 @media (max-width: 990px) and (min-width: 300px){
     .info{
-        width: 300px;
+        width: 600px;
     }
 }
