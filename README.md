@@ -20,9 +20,8 @@
 <div>
   <h3>Librerías de Frontend</h3>
   <ul>
-    <li>a</li>
-    <li>b</li>
-    <li>c</li>
+    <li>sass</li>
+    <li>bootstrap-icons</li>
   </ul>
   
   <h3>Librerías de Backend</h3>
