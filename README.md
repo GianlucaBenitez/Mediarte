@@ -54,5 +54,12 @@
 | [<img src="https://avatars.githubusercontent.com/u/166168478?v=4" width=115><br><sub>Gianluca Benítez</sub>](https://github.com/GianlucaBenitez) | [<img src="https://avatars.githubusercontent.com/u/121590933?v=4" width=115><br><sub>Celine Bonfanti</sub>](https://github.com/celipomi) | [<img src="https://avatars.githubusercontent.com/u/164538922?v=4" width=115><br><sub>Camila Luna</sub>](https://github.com/misaprostol) | [<img src="https://avatars.githubusercontent.com/u/166183514?v=4" width=115><br><sub>Tobias Araujo</sub>](https://github.com/toarauj) |
   | :---: | :---: | :---: | :---: |
 
+## ¿Como realizamos Mediarte?
+<h3>Modelo Entidad-Relacion</h3>
+Para poder comenzar con la programacion de la aplicacion primero teniamos que sentar las bases para poder construir sobre eso, por eso comenzamos con el modelo entidad-realcion (difinicion de entidades, atributos y sus relacions).
+<p align="center">
+  <img alt="Badge" src=""/>
+</p>
+
 </div>
 <br><br>
